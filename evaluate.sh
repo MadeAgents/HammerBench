@@ -1,37 +1,38 @@
 # log_dir="logs/en/GPT-4o"
 log_dir=$1
-language="en"
-# echo "single-turn"
-# test_type="ST_Perfect"
-# echo $test_type
-# python evaluate.py $log_dir/$test_type/ $language 'all'
-# wait
-# sleep 5
-# test_type="ST_Imperfect"
-# echo $test_type
-# python evaluate.py $log_dir/$test_type/ $language 'all'
-# wait
-# sleep 5
-# test_type="ST_External"
-# echo $test_type
-# python evaluate.py $log_dir/$test_type/ $language 'all'
-# wait
-# sleep 5
-# test_type="ir_ST_Perfect"
-# echo $test_type
-# python evaluate.py $log_dir/$test_type/ $language 'all'
-# wait
-# sleep 5
-# test_type="ir_ST_Imperfect"
-# echo $test_type
-# python evaluate.py $log_dir/$test_type/ $language 'all'
-# wait
-# sleep 5
-# test_type="ir_ST_External"
-# echo $test_type
-# python evaluate.py $log_dir/$test_type/ $language 'all'
-# wait
-# sleep 5
+# "en"
+language=$2
+echo "single-turn"
+test_type="ST_Perfect"
+echo $test_type
+python evaluate.py $log_dir/$test_type/ $language 'all'
+wait
+sleep 5
+test_type="ST_Imperfect"
+echo $test_type
+python evaluate.py $log_dir/$test_type/ $language 'all'
+wait
+sleep 5
+test_type="ST_External"
+echo $test_type
+python evaluate.py $log_dir/$test_type/ $language 'all'
+wait
+sleep 5
+test_type="ir_ST_Perfect"
+echo $test_type
+python evaluate.py $log_dir/$test_type/ $language 'all'
+wait
+sleep 5
+test_type="ir_ST_Imperfect"
+echo $test_type
+python evaluate.py $log_dir/$test_type/ $language 'all'
+wait
+sleep 5
+test_type="ir_ST_External"
+echo $test_type
+python evaluate.py $log_dir/$test_type/ $language 'all'
+wait
+sleep 5
 
 echo "multi-turn"
 python evaluate.py $log_dir/HammerBench_Based/ $language 'all'

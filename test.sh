@@ -1,6 +1,7 @@
 # "/home/notebook/data/group/model_hub/huggingface/meta-llama/Meta-Llama-3.1-70B-Instruct-GPTQ-INT4"
 model_path=$1
-language='en'
+# 'en'
+language=$2
 echo "multi-turn"
 python inference.py data/$language/multi-turn/HammerBench_Based.json $model_path $language
 wait

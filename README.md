@@ -82,7 +82,7 @@ pip install -r requirements.txt
 
 Use the following command for inference:
 ```
-bash test.sh <model_path>
+bash test.sh <model_path> <language>
 ```
 The results will be saved in 'logs/model_name'.
 
@@ -106,30 +106,32 @@ evaluate.py requires two inputs: the MT_0.json file and the MT_res.json file. Th
 
 Use the following command for evaluation:
 ```
-bash evaluate.sh <log_dir>
+bash evaluate.sh <log_dir> <language>
 ```
 
 For example, to evaluate the Qwen2.5-7B-Instruct model:
 ```
-bash test.sh Qwen2.5-7B-Instruct
-bash evaluate.sh logs/Qwen2.5-7B-Instruct
+bash test.sh Qwen2.5-7B-Instruct en
+bash evaluate.sh logs/Qwen2.5-7B-Instruct en
 ```
 
+You can set 'is_llm_judge = True' in evaluate.py and select model path in 'evaluation/llm_judge.py' to judge query-label-predict by LLMs.
+You can change the snapshot_id list([[0],[1,2], [-1]...]) in 'evaluate.py' to evaluate different turn for each conversation.
 
+### Post-processing log file
 After recording the results(e.g. Qwen7B.log) obtained from the previous bash commands, it can be conveniently converted into a dataframe through logs/log2df.py.
 ```
-bash evaluate.sh logs/Qwen2.5-7B-Instruct > logs/Qwen7B.log 2>&1
+bash evaluate.sh logs/Qwen2.5-7B-Instruct en > logs/Qwen7B.log 2>&1
 python log2df.py Qwen7B.log
 ```
 
+## Evaluation for more LLMs:
 If you need to adapt the prompt and post-processing for different output formats, please modify :
 ```
 template.py
 evaluation/process_output.py
 ```
 
-You can set 'is_llm_judge = True' in evaluate.py and select model path in 'evaluation/llm_judge.py' to judge query-label-predict by LLMs.
-You can change the snapshot_id list([[0],[1,2], [-1]...]) in 'evaluate.py' to evaluate different turn for each conversation.
 
 ## Citation
 
