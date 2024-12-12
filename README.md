@@ -51,7 +51,7 @@ All of our datasets are in "data/en/", use the shareGPT format.
       'single_tool':<ground truth function information>
 }
 ```
-While the 'id' represents the indice in HammerBench_Based.json for data before transformation (e.g. w/o SO...). 
+While the 'id' represents the indice in HammerBench_Based.json for data before transformation (e.g. w/o SO...). It will be used in 'evaluation/align_msg.py' to get the origin sQsA dataset to compare the metrics difference before and after the transformation. 
 The detail descriptions of different data types are in our paper. They are saved in:
 
 ST_Perfect : data/en/single-turn/ST_Perfect.json
@@ -67,7 +67,7 @@ SO : data/en/multi-turn/HammerBench_SO_case1.json(SO_case2.json)
 mSv : data/en/multi-turn/HammerBench_mSv.json
 External : data/en/multi-turn/HammerBench_External.json
 
-All datasets are transformed from the 'HammerBench_Based.json' in the sQsA format. Since not all sQsA data can be converted, it is necessary to record the indices of the sQsA data involved in different types of conversions( data/en/multi-turn/correspond_id). For example, 'correspond_id_mSv.json' records the indices about 'HammerBench_mSv.json'. Also, the files in 'data/en/multi-turn/snapshot_id' record the id of turn for SO and External transformation occuring to evaluate the snapshots at the moment of slot overriding(SO) and answering with pronouns(External).
+All datasets are transformed from the 'HammerBench_Based.json' in the sQsA format. The files in 'data/en/multi-turn/snapshot_id' record the id of turn for SO and External transformation occuring to evaluate the snapshots at the moment of slot overriding(SO) and answering with pronouns(External).
 
 As for Chinese dataset, please see 'data/zh'.
 
@@ -115,13 +115,14 @@ bash test.sh Qwen2.5-7B-Instruct en
 bash evaluate.sh logs/Qwen2.5-7B-Instruct en
 ```
 
-You can set 'is_llm_judge = True' in evaluate.py and select model path in 'evaluation/llm_judge.py' to judge query-label-predict by LLMs.
+You can set 'is_llm_judge = True' in evaluate.py and select model path in 'evaluation/llm_judge.py' to judge query-label-predict by LLMs.  The LLM judge prompt is in 'evaluation/prompt_judge.py'. And judge function is in 'evaluation/llm_judge.py'.
 You can change the snapshot_id list([[0],[1,2], [-1]...]) in 'evaluate.py' to evaluate different turn for each conversation.
 
 ### Post-processing log file
 After recording the results(e.g. Qwen7B.log) obtained from the previous bash commands, it can be conveniently converted into a dataframe through logs/log2df.py.
 ```
 bash evaluate.sh logs/Qwen2.5-7B-Instruct en > logs/Qwen7B.log 2>&1
+cd logs/
 python log2df.py Qwen7B.log
 ```
 
