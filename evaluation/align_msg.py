@@ -7,8 +7,8 @@ LLM_check_response = json.load(open(log_dir+'HammerBench_Based/LLM_check_respons
 turn_flags_res = json.load(open(log_dir+'HammerBench_Based/turn_flags_res.json','r'))
 
 test_type = sys.argv[2]  # 'xQxA'
-id_file = test_type.replace('HammerBench_', '').replace('mQmA', 'xQxA')
-MT_id = json.load(open(f'data/en/multi-turn/correspond_id/correspond_id_{id_file}.json','r'))
+MT_id = json.load(open(f'data/en/multi-turn/{test_type}.json','r'))
+MT_id = [x['id'] for x in MT_id]
 
 # 按照 id提取出相应数据和结果
 new_0, new_res = [], []

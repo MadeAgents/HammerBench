@@ -2,29 +2,20 @@
 import json
 import sys, os
 from evaluation.process_output import parse_response, parse_mistral, parse_xlam, parse_toolace   # Post-processing here
-from evaluation.metrics import get_e2e_rougel, get_e2e_rougel_en, get_miss_redundant_num#, LLM_label_param_zh, LLM_label_param
+from evaluation.metrics import get_e2e_rougel, get_e2e_rougel_en, get_miss_redundant_num, LLM_label_param_zh, LLM_label_param
 
-flag_eval = 'all' # 'all'  '-1'  'mid' '0'
-print(flag_eval)
+from evaluation.llm_judge import LLM_eval, calculate_turn, FN_PN
+
+is_llm_judge = False
+
 df = []
 log_dir = sys.argv[1]
 language = sys.argv[2]
+flag_eval = sys.argv[3] # 'all'  '-1'  'mid' '0'
+print(flag_eval)
 MT = json.load(open(log_dir+'MT_0.json','r'))
 MT_res = json.load(open(log_dir+'MT_res.json','r'))
 
-def calculate_turn(turn_flags, funcAcc):
-    try:
-        idx = turn_flags.index(False)
-        PR = idx/len(turn_flags)
-    except:  # When all are True
-        idx = -1
-        PR = 1
-    if not funcAcc:
-        PR=0
-        success_rate0 = False
-    else:
-        success_rate0 = sum(turn_flags)==len(turn_flags) and turn_flags!=[]
-    return idx, PR, success_rate0, sum(turn_flags)*int(funcAcc)
 
 json_format_error = 0
 tool_rej_rate = 0
@@ -171,3 +162,22 @@ print("SR：", sum(success_rate)/(len(success_rate)+1e-9))
 import pandas as pd
 df = pd.DataFrame(df)
 df.to_csv(log_dir+'badcase.csv', index=0)
+
+if not os.path.exists(log_dir+'turn_flags_res.json') and is_llm_judge:#language=='en':
+    LLM_eval(llm_inputs, llm_inputs_L, snap_shot_id, df, log_dir, language)
+elif is_llm_judge:
+    turn_flags_res = json.load(open(log_dir+'turn_flags_res.json', 'r'))
+    llm_inputs_L = json.load(open(log_dir+'LLM_check_L.json', 'r'))
+    turn_completion_rates, success_rate, Args_Acc = [], [], []
+    for i in range(len(turn_flags_res)):
+        turn_flags = [turn_flags_res[i][k] for k in snap_shot_id[i]]
+        FC_res0 = json.loads(df.loc[i,'FC_res'])
+        FC_res0 = [FC_res0[k] for k in snap_shot_id[i]]
+        turn_flags = FN_PN(FC_res0, turn_flags)
+        idx, turn_completion_rate, success_rate0, Args_Acc0 = calculate_turn(turn_flags, df.loc[i,'Func Name'])
+        Args_Acc.append((Args_Acc0, len(snap_shot_id[i])))
+        turn_completion_rates.append(turn_completion_rate)
+        success_rate.append(success_rate0)
+    print("Args_Acc LLM：", sum([x[0] for x in Args_Acc])/sum([x[1] for x in Args_Acc]))
+    print("轮次LLM check平均完成率 turn_completion_rates：", sum(turn_completion_rates)/(len(turn_completion_rates)+1e-9))
+    print("整体LLM check平均成功率 success_rate：", sum(success_rate)/(len(success_rate)+1e-9))

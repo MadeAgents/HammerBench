@@ -35,6 +35,7 @@ For more details, please refer to our paper.
 All of our datasets are in "data/en/", use the shareGPT format.
 ```
 {
+      'id':17,
       'messages':[
             {
                   'role':'user'
@@ -50,7 +51,7 @@ All of our datasets are in "data/en/", use the shareGPT format.
       'single_tool':<ground truth function information>
 }
 ```
-
+While the 'id' represents the indice in HammerBench_Based.json for data before transformation (e.g. w/o SO...). 
 The detail descriptions of different data types are in our paper. They are saved in:
 
 ST_Perfect : data/en/single-turn/ST_Perfect.json
@@ -70,7 +71,7 @@ All datasets are transformed from the 'HammerBench_Based.json' in the sQsA forma
 
 As for Chinese dataset, please see 'data/zh'.
 
-## Evaluation
+## Inference
 ### Install Dependencies
 
 You should install dependencies using the following command:
@@ -79,47 +80,56 @@ You should install dependencies using the following command:
 pip install -r requirements.txt
 ```
 
+Use the following command for inference:
+```
+bash test.sh <model_path>
+```
+The results will be saved in 'logs/model_name'.
+
+
+## Evaluation
 ### Evaluate the log file inferenced by LLMs
-evaluate.py requires two inputs: the MT_0.json file and the MT_res.json file. The logs/GPT-4o/HammerBench_mQmA/MT_0.json and data/en/multi-turn/HammerBench_mQmA.json are the same. And the item of MT_res.json is as follows:
+evaluate.py requires two inputs: the MT_0.json file and the MT_res.json file. The logs/en/Qwen2.5-7B-Instruct/HammerBench_mQmA/MT_0.json and data/en/multi-turn/HammerBench_mQmA.json are the same. And the item of MT_res.json is inferenced by Qwen2.5-7B-Instruct as follows:
 ```
 {
-      "input": "user:Check if my car has any illegal records\nassistant:What city is the violation located in?\nuser:The violating city is Guangzhou.\nassistant:Please provide the license plate number\nuser:My license plate number is Yue B67890.",
-      "predict": "```json\n{\"name\": \"Navigation.TrafficViolations.queryViolation\", \"parameters\": {\"plate_number\": \"Yue B67890\", \"city\": \"Guangzhou\", \"time\": \"\"}}\n```",
-      "label": {
-      "name": "Navigation.TrafficViolations.queryViolation",
-            "arguments": {
-            "city": "Guangzhou",
-            "plate_number": "Yue B67890"
-            }
-      }
+    "input": "user:Check if my car has any illegal records\nassistant:What city is the violation located in?\nuser:The violating city is Guangzhou.\nassistant:Please provide the license plate number\nuser:My license plate number is Yue B67890.",
+    "predict": "```json\n{\"name\": \"Navigation.TrafficViolations.queryViolation\", \"parameters\": {\"plate_number\": \"Yue B67890\", \"city\": \"Guangzhou\", \"time\": \"\"}}\n```",
+    "label": {
+        "name": "Navigation.TrafficViolations.queryViolation",
+        "arguments": {
+          "city": "Guangzhou",
+          "plate_number": "Yue B67890"
+        }
+    }
 }
 ```
 
 Use the following command for evaluation:
-
 ```
-bash evaluate_MT.sh <log_dir>
-```
-
-For example, to evaluate the GPT-4o model:
-
-```
-bash eval.sh logs/GPT-4o
+bash evaluate.sh <log_dir>
 ```
 
-
-Same to the evaluation of single-turn results:
+For example, to evaluate the Qwen2.5-7B-Instruct model:
 ```
-python evaluate.py <log_dir> en
-```
-
-After recording the results(e.g. GPT-4o.log) obtained from the previous bash commands, it can be conveniently converted into a dataframe through logs/log2df.py.
-```
-python log2df.py GPT-4o.log
+bash test.sh Qwen2.5-7B-Instruct
+bash evaluate.sh logs/Qwen2.5-7B-Instruct
 ```
 
-If you need to adapt the post-processing for different output formats, please modify evaluation/process_output.py.
 
+After recording the results(e.g. Qwen7B.log) obtained from the previous bash commands, it can be conveniently converted into a dataframe through logs/log2df.py.
+```
+bash evaluate.sh logs/Qwen2.5-7B-Instruct > logs/Qwen7B.log 2>&1
+python log2df.py Qwen7B.log
+```
+
+If you need to adapt the prompt and post-processing for different output formats, please modify :
+```
+template.py
+evaluation/process_output.py
+```
+
+You can set 'is_llm_judge = True' in evaluate.py and select model path in 'evaluation/llm_judge.py' to judge query-label-predict by LLMs.
+You can change the snapshot_id list([[0],[1,2], [-1]...]) in 'evaluate.py' to evaluate different turn for each conversation.
 
 ## Citation
 

@@ -7,8 +7,7 @@ from rouge import Rouge
 # from openai import OpenAI
 # client = OpenAI(api_key="None", base_url="http://10.237.50.193:8000/v1")
 
-# sys.path.append('/home/notebook/data/en/personal/80397352/HammerBench/data_generation/')
-# from LLM_check.prompt import label_prompt, label_prompt_en
+from evaluation.prompt_judge import label_prompt, label_prompt_en
 def LLM_label_param(query, model_output, label):
     label = dict(sorted(label.items(), key=lambda x:x[0]))
     model_output = dict(sorted(model_output.items(), key=lambda x:x[0]))

@@ -2,3 +2,5 @@ json
 pandas
 re
 rouge
+tqdm
+vllm==0.5.5
