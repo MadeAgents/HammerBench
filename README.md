@@ -25,6 +25,8 @@ The construction methodology of our datasets is illustrated in the following dia
 <div align="center">
 <img src="imgs/generation pipline.png" width="1000px">
 </div>
+
+
 - **toolset construction** : The construction of the toolset was inspired by selecting the most popular apps from the APP Store. We use LLMs to initially generate descriptions of tool descriptions, then manually revised. Subsequently, JSON format tools are generated based on these descriptions. The entire process includes multiple rounds of manual inspection and correction, ultimately resulting in a toolset comprising 1,063 tools.
 - **basic data construction** : Based on the self-instruct method we further generate instances by outputing arguments first and then queries, and strictly controll the parameters that appear in the generated arguments. Additionally, we designed an LLM-based check module to filter out low-quality data, and manually completed the error data.
 - **fine-grained data construction** : For example, 'External individual information' module can convert any query-label pairs into the dataset containing external individual information. And we also generate datasets about diverse Q&A trajectories and intent/argument shifts. 
@@ -32,7 +34,8 @@ The construction methodology of our datasets is illustrated in the following dia
 For more details, please refer to our paper.
 
 ## Data
-All of our datasets are in "data/en/", use the shareGPT format.
+Please download our dataset using the following link: [HammerBench](https://huggingface.co/datasets/MadeAgents/HammerBench)
+We give some examples of our datasets in 'data/', use the shareGPT format. 
 ```
 {
       'id':17,
@@ -52,19 +55,31 @@ All of our datasets are in "data/en/", use the shareGPT format.
 }
 ```
 While the 'id' represents the indice in HammerBench_Based.json for data before transformation (e.g. w/o SO...). It will be used in 'evaluation/align_msg.py' to get the origin sQsA dataset to compare the metrics difference before and after the transformation. 
+
 The detail descriptions of different data types are in our paper. They are saved in:
 
 ST_Perfect : data/en/single-turn/ST_Perfect.json
+
 ST_Imperfect : data/en/single-turn/ST_Imperfect.json
+
 ST_External : data/en/single-turn/ST_External.json
+
 irrelevant : data/en/single-turn/(ir_ST_External.json, ir_ST_Perfect.json, ir_ST_Imperfect.json)
+
 sQsA : data/en/multi-turn/HammerBench_Based.json
+
 mQmA : data/en/multi-turn/HammerBench_mQmA.json
+
 mQsA : data/en/multi-turn/HammerBench_mQsA.json
+
 sQmA : data/en/multi-turn/HammerBench_sQmA.json
+
 IS : data/en/multi-turn/HammerBench_IS.json
+
 SO : data/en/multi-turn/HammerBench_SO_case1.json(SO_case2.json)
+
 mSv : data/en/multi-turn/HammerBench_mSv.json
+
 External : data/en/multi-turn/HammerBench_External.json
 
 All datasets are transformed from the 'HammerBench_Based.json' in the sQsA format. The files in 'data/en/multi-turn/snapshot_id' record the id of turn for SO and External transformation occuring to evaluate the snapshots at the moment of slot overriding(SO) and answering with pronouns(External).
