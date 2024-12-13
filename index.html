@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HammerBench</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .codeblock {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HammerBench</h1>
+    <p>
+        The source code and dataset mentioned in the paper 
+        <a href="https://arxiv.org/pdf/">HammerBench: Fine-Grained Evaluation for Function-Calling with Multi-turn Human-LLM Interactions</a>.
+    </p>
+
+    <h2>Overview</h2>
+    <p><strong>HammerBench</strong> is a benchmark that closely aligns with real-world slot-filling tasks in interactive dialogues. You can evaluate the performance of LLMs under various circumstances as follows:</p>
+    <ul>
+        <li><strong>Imperfect instruction</strong>: The user query that only gives a few required parameter values.</li>
+        <li><strong>Diverse question-answer trajectories</strong>: Users may provide more or fewer responses about missing arguments than expected.</li>
+        <li><strong>Intent/argument shifts</strong>: Users may frequently modify their intents or arguments due to errors or other reasons during the interaction.</li>
+        <li><strong>External individual information</strong>: Users may refer to external individual information indirectly, often using pronouns instead of directly specifying slot values.</li>
+    </ul>
+    
+    <div class="center">
+        <img src="example datasets.png" alt="Example Datasets" width="1000px">
+    </div>
+
+    <h2>Data</h2>
+    <p>All of our datasets are in "en/" or "zh/", using the ShareGPT format.</p>
+    <div class="codeblock">
+        <pre>
+{
+    "id": 17,
+    "messages": [
+        {
+            "role": "user",
+            "content": "user query"
+        },
+        {
+            "role": "function call",
+            "content": {"name": "<function name>", "arguments": "<arguments>"}
+        }
+        ...
+    ],
+    "multiple_tools": "<candidate tools>",
+    "single_tool": "<ground truth function information>"
+}
+        </pre>
+    </div>
+    <p>
+        The 'id' represents the index in HammerBench_Based.json for data before transformation (e.g., w/o SO...). It will be used in 'evaluation/align_msg.py' to get the original sQsA dataset to compare the metric differences before and after the transformation. The detailed descriptions of different data types are in our paper. They are saved in:
+    </p>
+    <ul>
+        <li>ST_Perfect: en/single-turn/ST_Perfect.json</li>
+        <li>ST_Imperfect: en/single-turn/ST_Imperfect.json</li>
+        <li>ST_External: en/single-turn/ST_External.json</li>
+        <li>Irrelevant: en/single-turn/(ir_ST_External.json, ir_ST_Perfect.json, ir_ST_Imperfect.json)</li>
+        <li>sQsA: en/multi-turn/HammerBench_Based.json</li>
+        <li>mQmA: en/multi-turn/HammerBench_mQmA.json</li>
+        <li>mQsA: en/multi-turn/HammerBench_mQsA.json</li>
+        <li>sQmA: en/multi-turn/HammerBench_sQmA.json</li>
+        <li>IS: en/multi-turn/HammerBench_IS.json</li>
+        <li>SO: en/multi-turn/HammerBench_SO_case1.json, SO_case2.json</li>
+        <li>mSv: en/multi-turn/HammerBench_mSv.json</li>
+        <li>External: en/multi-turn/HammerBench_External.json</li>
+    </ul>
+    <p>All datasets are transformed from the 'HammerBench_Based.json' in the sQsA format. The files in 'en/multi-turn/snapshot_id' record the ids of turns for SO and External transformations occurring to evaluate the snapshots at the moment of slot overriding (SO) and answering with pronouns (External).</p>
+    <p>As for the Chinese dataset, please see 'zh/'.</p>
+
+    <h2>Evaluation</h2>
+    <p>We evaluate some LLMs in our datasets:</p>
+    <div class="center">
+        <img src="single-turn results.png" alt="Single-turn Results" width="600px">
+    </div>
+    <div class="center">
+        <img src="imgs_multi-turn results.pdf" alt="Multi-turn Results" width="1000px">
+    </div>
+</body>
+</html>
