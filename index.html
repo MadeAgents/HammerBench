@@ -105,8 +105,1085 @@
     <div class="center">
         <img src="single-turn results.png" alt="Single-turn Results" width="600px">
     </div>
-    <div class="center">
-        <img src="imgs_multi-turn results.pdf" alt="Multi-turn Results" width="1000px">
-    </div>
+    
+    <style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:0;}
+        .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+          overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+          font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+        </style>
+        <table class="tg"><thead>
+          <tr>
+            <th class="tg-c3ow">Data type</th>
+            <th class="tg-c3ow">Model</th>
+            <th class="tg-c3ow">Func Acc</th>
+            <th class="tg-c3ow">PN_FP</th>
+            <th class="tg-c3ow">PN_FN</th>
+            <th class="tg-c3ow">Args Acc</th>
+            <th class="tg-c3ow">PR</th>
+            <th class="tg-c3ow">SR</th>
+            <th class="tg-c3ow">Args Acc/Func Acc</th>
+            <th class="tg-c3ow">PR/Func Acc</th>
+            <th class="tg-c3ow">SR/Func Acc</th>
+          </tr></thead>
+        <tbody>
+          <tr>
+            <td class="tg-c3ow" rowspan="7">sQsA</td>
+            <td class="tg-c3ow">GPT-4o</td>
+            <td class="tg-c3ow">71.28%</td>
+            <td class="tg-c3ow">16.47%</td>
+            <td class="tg-c3ow">4.69%</td>
+            <td class="tg-c3ow">53.99%</td>
+            <td class="tg-c3ow">43.43%</td>
+            <td class="tg-c3ow">34.65%</td>
+            <td class="tg-c3ow">75.74%</td>
+            <td class="tg-c3ow"></td>
+            <td class="tg-c3ow">48.61%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-70B-Instruct-INT4</td>
+            <td class="tg-c3ow">83.91%</td>
+            <td class="tg-c3ow">18.99%</td>
+            <td class="tg-c3ow">1.87%</td>
+            <td class="tg-c3ow">61.58%</td>
+            <td class="tg-c3ow">51.91%</td>
+            <td class="tg-c3ow">39.85%</td>
+            <td class="tg-c3ow">73.39%</td>
+            <td class="tg-c3ow">61.87%</td>
+            <td class="tg-c3ow">47.49%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-72B-Instruct-Int4</td>
+            <td class="tg-c3ow">74.75%</td>
+            <td class="tg-c3ow">18.62%</td>
+            <td class="tg-c3ow">13.39%</td>
+            <td class="tg-c3ow">47.16%</td>
+            <td class="tg-c3ow">36.82%</td>
+            <td class="tg-c3ow">22.02%</td>
+            <td class="tg-c3ow">63.09%</td>
+            <td class="tg-c3ow">49.25%</td>
+            <td class="tg-c3ow">29.47%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-8B-Instruct</td>
+            <td class="tg-c3ow">88.36%</td>
+            <td class="tg-c3ow">27.40%</td>
+            <td class="tg-c3ow">6.31%</td>
+            <td class="tg-c3ow">55.98%</td>
+            <td class="tg-c3ow">44.10%</td>
+            <td class="tg-c3ow">31.93%</td>
+            <td class="tg-c3ow">63.35%</td>
+            <td class="tg-c3ow">49.91%</td>
+            <td class="tg-c3ow">36.13%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Ministral-8B-Instruct-2410</td>
+            <td class="tg-c3ow">54.70%</td>
+            <td class="tg-c3ow">49.93%</td>
+            <td class="tg-c3ow">5.13%</td>
+            <td class="tg-c3ow">22.89%</td>
+            <td class="tg-c3ow">9.67%</td>
+            <td class="tg-c3ow">6.93%</td>
+            <td class="tg-c3ow">41.85%</td>
+            <td class="tg-c3ow">17.67%</td>
+            <td class="tg-c3ow">12.66%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">xLAM-7b-fc-r</td>
+            <td class="tg-c3ow">90.84%</td>
+            <td class="tg-c3ow">63.73%</td>
+            <td class="tg-c3ow">1.05%</td>
+            <td class="tg-c3ow">30.28%</td>
+            <td class="tg-c3ow">11.53%</td>
+            <td class="tg-c3ow">8.17%</td>
+            <td class="tg-c3ow">33.33%</td>
+            <td class="tg-c3ow">12.69%</td>
+            <td class="tg-c3ow">8.99%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">ToolACE-8B</td>
+            <td class="tg-c3ow">46.53%</td>
+            <td class="tg-c3ow">87.29%</td>
+            <td class="tg-c3ow">0.30%</td>
+            <td class="tg-c3ow">4.85%</td>
+            <td class="tg-c3ow">0.25%</td>
+            <td class="tg-c3ow">0.00%</td>
+            <td class="tg-c3ow">10.42%</td>
+            <td class="tg-c3ow">0.53%</td>
+            <td class="tg-c3ow">0.00%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow" rowspan="8">mQmA</td>
+            <td class="tg-c3ow">GPT-4o</td>
+            <td class="tg-c3ow">71.28%</td>
+            <td class="tg-c3ow">15.89%</td>
+            <td class="tg-c3ow">3.71%</td>
+            <td class="tg-c3ow">52.95%</td>
+            <td class="tg-c3ow">46.62%</td>
+            <td class="tg-c3ow">40.09%</td>
+            <td class="tg-c3ow">74.28%</td>
+            <td class="tg-c3ow">65.40%</td>
+            <td class="tg-c3ow">56.24%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-70B-Instruct-INT4</td>
+            <td class="tg-c3ow">84.15%</td>
+            <td class="tg-c3ow">17.46%</td>
+            <td class="tg-c3ow">2.14%</td>
+            <td class="tg-c3ow">61.18%</td>
+            <td class="tg-c3ow">56.47%</td>
+            <td class="tg-c3ow">46.03%</td>
+            <td class="tg-c3ow">72.69%</td>
+            <td class="tg-c3ow">67.10%</td>
+            <td class="tg-c3ow">54.70%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-72B-Instruct-Int4</td>
+            <td class="tg-c3ow">74.50%</td>
+            <td class="tg-c3ow">17.87%</td>
+            <td class="tg-c3ow">4.26%</td>
+            <td class="tg-c3ow">53.37%</td>
+            <td class="tg-c3ow">48.87%</td>
+            <td class="tg-c3ow">42.07%</td>
+            <td class="tg-c3ow">71.64%</td>
+            <td class="tg-c3ow">65.60%</td>
+            <td class="tg-c3ow">56.47%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-8B-Instruct</td>
+            <td class="tg-c3ow">88.36%</td>
+            <td class="tg-c3ow">26.57%</td>
+            <td class="tg-c3ow">5.24%</td>
+            <td class="tg-c3ow">56.01%</td>
+            <td class="tg-c3ow">50.58%</td>
+            <td class="tg-c3ow">41.08%</td>
+            <td class="tg-c3ow">63.38%</td>
+            <td class="tg-c3ow">57.24%</td>
+            <td class="tg-c3ow">46.49%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-7B-Instruct</td>
+            <td class="tg-c3ow">73.01%</td>
+            <td class="tg-c3ow">26.56%</td>
+            <td class="tg-c3ow">3.77%</td>
+            <td class="tg-c3ow">45.99%</td>
+            <td class="tg-c3ow">41.43%</td>
+            <td class="tg-c3ow">33.66%</td>
+            <td class="tg-c3ow">62.98%</td>
+            <td class="tg-c3ow">56.74%</td>
+            <td class="tg-c3ow">46.10%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Ministral-8B-Instruct-2410</td>
+            <td class="tg-c3ow">54.95%</td>
+            <td class="tg-c3ow">52.68%</td>
+            <td class="tg-c3ow">3.83%</td>
+            <td class="tg-c3ow">21.30%</td>
+            <td class="tg-c3ow">11.22%</td>
+            <td class="tg-c3ow">8.17%</td>
+            <td class="tg-c3ow">38.77%</td>
+            <td class="tg-c3ow">20.42%</td>
+            <td class="tg-c3ow">14.86%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">xLAM-7b-fc-r</td>
+            <td class="tg-c3ow">91.08%</td>
+            <td class="tg-c3ow">62.98%</td>
+            <td class="tg-c3ow">1.28%</td>
+            <td class="tg-c3ow">28.37%</td>
+            <td class="tg-c3ow">14.25%</td>
+            <td class="tg-c3ow">11.38%</td>
+            <td class="tg-c3ow">31.15%</td>
+            <td class="tg-c3ow">15.64%</td>
+            <td class="tg-c3ow">12.49%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">ToolACE-8B</td>
+            <td class="tg-c3ow">46.53%</td>
+            <td class="tg-c3ow">81.00%</td>
+            <td class="tg-c3ow">0.23%</td>
+            <td class="tg-c3ow">6.43%</td>
+            <td class="tg-c3ow">0.45%</td>
+            <td class="tg-c3ow">0.00%</td>
+            <td class="tg-c3ow">13.82%</td>
+            <td class="tg-c3ow">0.98%</td>
+            <td class="tg-c3ow">0.00%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow" rowspan="8">mQsA</td>
+            <td class="tg-c3ow">GPT-4o</td>
+            <td class="tg-c3ow">71.78%</td>
+            <td class="tg-c3ow">15.86%</td>
+            <td class="tg-c3ow">6.73%</td>
+            <td class="tg-c3ow">51.67%</td>
+            <td class="tg-c3ow">42.65%</td>
+            <td class="tg-c3ow">35.39%</td>
+            <td class="tg-c3ow">71.98%</td>
+            <td class="tg-c3ow">59.42%</td>
+            <td class="tg-c3ow">49.31%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-70B-Instruct-INT4</td>
+            <td class="tg-c3ow">83.66%</td>
+            <td class="tg-c3ow">23.28%</td>
+            <td class="tg-c3ow">3.26%</td>
+            <td class="tg-c3ow">56.80%</td>
+            <td class="tg-c3ow">47.47%</td>
+            <td class="tg-c3ow">34.40%</td>
+            <td class="tg-c3ow">67.89%</td>
+            <td class="tg-c3ow">56.74%</td>
+            <td class="tg-c3ow">41.12%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-72B-Instruct-Int4</td>
+            <td class="tg-c3ow">74.50%</td>
+            <td class="tg-c3ow">19.10%</td>
+            <td class="tg-c3ow">9.55%</td>
+            <td class="tg-c3ow">48.94%</td>
+            <td class="tg-c3ow">38.65%</td>
+            <td class="tg-c3ow">27.72%</td>
+            <td class="tg-c3ow">65.68%</td>
+            <td class="tg-c3ow">51.88%</td>
+            <td class="tg-c3ow">37.20%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-8B-Instruct</td>
+            <td class="tg-c3ow">88.36%</td>
+            <td class="tg-c3ow">30.71%</td>
+            <td class="tg-c3ow">7.70%</td>
+            <td class="tg-c3ow">52.49%</td>
+            <td class="tg-c3ow">41.60%</td>
+            <td class="tg-c3ow">28.21%</td>
+            <td class="tg-c3ow">59.40%</td>
+            <td class="tg-c3ow">47.07%</td>
+            <td class="tg-c3ow">31.93%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-7B-Instruct</td>
+            <td class="tg-c3ow">73.26%</td>
+            <td class="tg-c3ow">33.08%</td>
+            <td class="tg-c3ow">5.53%</td>
+            <td class="tg-c3ow">41.76%</td>
+            <td class="tg-c3ow">31.77%</td>
+            <td class="tg-c3ow">21.78%</td>
+            <td class="tg-c3ow">57.00%</td>
+            <td class="tg-c3ow">43.36%</td>
+            <td class="tg-c3ow">29.72%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Ministral-8B-Instruct-2410</td>
+            <td class="tg-c3ow">54.70%</td>
+            <td class="tg-c3ow">59.69%</td>
+            <td class="tg-c3ow">6.26%</td>
+            <td class="tg-c3ow">17.08%</td>
+            <td class="tg-c3ow">6.93%</td>
+            <td class="tg-c3ow">3.22%</td>
+            <td class="tg-c3ow">31.23%</td>
+            <td class="tg-c3ow">12.67%</td>
+            <td class="tg-c3ow">5.88%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">xLAM-7b-fc-r</td>
+            <td class="tg-c3ow">90.84%</td>
+            <td class="tg-c3ow">72.46%</td>
+            <td class="tg-c3ow">1.88%</td>
+            <td class="tg-c3ow">21.39%</td>
+            <td class="tg-c3ow">8.52%</td>
+            <td class="tg-c3ow">3.71%</td>
+            <td class="tg-c3ow">23.55%</td>
+            <td class="tg-c3ow">9.38%</td>
+            <td class="tg-c3ow">4.09%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">ToolACE-8B</td>
+            <td class="tg-c3ow">46.53%</td>
+            <td class="tg-c3ow">87.59%</td>
+            <td class="tg-c3ow">0.59%</td>
+            <td class="tg-c3ow">4.03%</td>
+            <td class="tg-c3ow">0.25%</td>
+            <td class="tg-c3ow">0.00%</td>
+            <td class="tg-c3ow">8.67%</td>
+            <td class="tg-c3ow">0.53%</td>
+            <td class="tg-c3ow">0.00%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow" rowspan="8">sQmA</td>
+            <td class="tg-c3ow">GPT-4o</td>
+            <td class="tg-c3ow">72.52%</td>
+            <td class="tg-c3ow">17.87%</td>
+            <td class="tg-c3ow">3.49%</td>
+            <td class="tg-c3ow">53.37%</td>
+            <td class="tg-c3ow">47.18%</td>
+            <td class="tg-c3ow">40.09%</td>
+            <td class="tg-c3ow">73.59%</td>
+            <td class="tg-c3ow">65.05%</td>
+            <td class="tg-c3ow">55.29%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-70B-Instruct-INT4</td>
+            <td class="tg-c3ow">83.91%</td>
+            <td class="tg-c3ow">17.00%</td>
+            <td class="tg-c3ow">2.64%</td>
+            <td class="tg-c3ow">60.33%</td>
+            <td class="tg-c3ow">56.18%</td>
+            <td class="tg-c3ow">45.54%</td>
+            <td class="tg-c3ow">71.90%</td>
+            <td class="tg-c3ow">66.96%</td>
+            <td class="tg-c3ow">54.27%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-72B-Instruct-Int4</td>
+            <td class="tg-c3ow">73.76%</td>
+            <td class="tg-c3ow">18.31%</td>
+            <td class="tg-c3ow">5.01%</td>
+            <td class="tg-c3ow">51.89%</td>
+            <td class="tg-c3ow">48.37%</td>
+            <td class="tg-c3ow">41.08%</td>
+            <td class="tg-c3ow">70.35%</td>
+            <td class="tg-c3ow">65.58%</td>
+            <td class="tg-c3ow">55.70%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-8B-Instruct</td>
+            <td class="tg-c3ow">88.36%</td>
+            <td class="tg-c3ow">27.41%</td>
+            <td class="tg-c3ow">5.36%</td>
+            <td class="tg-c3ow">55.48%</td>
+            <td class="tg-c3ow">50.53%</td>
+            <td class="tg-c3ow">41.33%</td>
+            <td class="tg-c3ow">62.79%</td>
+            <td class="tg-c3ow">57.18%</td>
+            <td class="tg-c3ow">46.77%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-7B-Instruct</td>
+            <td class="tg-c3ow">73.26%</td>
+            <td class="tg-c3ow">26.91%</td>
+            <td class="tg-c3ow">4.49%</td>
+            <td class="tg-c3ow">45.99%</td>
+            <td class="tg-c3ow">41.00%</td>
+            <td class="tg-c3ow">33.16%</td>
+            <td class="tg-c3ow">62.77%</td>
+            <td class="tg-c3ow">55.96%</td>
+            <td class="tg-c3ow">45.27%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Ministral-8B-Instruct-2410</td>
+            <td class="tg-c3ow">54.95%</td>
+            <td class="tg-c3ow">53.06%</td>
+            <td class="tg-c3ow">4.02%</td>
+            <td class="tg-c3ow">21.09%</td>
+            <td class="tg-c3ow">11.09%</td>
+            <td class="tg-c3ow">8.17%</td>
+            <td class="tg-c3ow">38.39%</td>
+            <td class="tg-c3ow">20.19%</td>
+            <td class="tg-c3ow">14.86%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">xLAM-7b-fc-r</td>
+            <td class="tg-c3ow">90.84%</td>
+            <td class="tg-c3ow">63.94%</td>
+            <td class="tg-c3ow">1.40%</td>
+            <td class="tg-c3ow">28.16%</td>
+            <td class="tg-c3ow">14.04%</td>
+            <td class="tg-c3ow">11.13%</td>
+            <td class="tg-c3ow">31.00%</td>
+            <td class="tg-c3ow">15.46%</td>
+            <td class="tg-c3ow">12.26%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">ToolACE-8B</td>
+            <td class="tg-c3ow">46.53%</td>
+            <td class="tg-c3ow">81.00%</td>
+            <td class="tg-c3ow">0.23%</td>
+            <td class="tg-c3ow">6.33%</td>
+            <td class="tg-c3ow">0.45%</td>
+            <td class="tg-c3ow">0.00%</td>
+            <td class="tg-c3ow">13.60%</td>
+            <td class="tg-c3ow">0.98%</td>
+            <td class="tg-c3ow">0.00%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow" rowspan="8">w/o SO</td>
+            <td class="tg-c3ow">GPT-4o</td>
+            <td class="tg-c3ow">74.15%</td>
+            <td class="tg-c3ow">15.62%</td>
+            <td class="tg-c3ow">5.30%</td>
+            <td class="tg-c3ow">55.74%</td>
+            <td class="tg-c3ow">48.91%</td>
+            <td class="tg-c3ow">41.16%</td>
+            <td class="tg-c3ow">75.18%</td>
+            <td class="tg-c3ow">65.88%</td>
+            <td class="tg-c3ow">55.40%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-70B-Instruct-INT4</td>
+            <td class="tg-c3ow">85.77%</td>
+            <td class="tg-c3ow">21.38%</td>
+            <td class="tg-c3ow">2.08%</td>
+            <td class="tg-c3ow">60.82%</td>
+            <td class="tg-c3ow">52.27%</td>
+            <td class="tg-c3ow">43.36%</td>
+            <td class="tg-c3ow">70.93%</td>
+            <td class="tg-c3ow">60.95%</td>
+            <td class="tg-c3ow">50.54%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-72B-Instruct-Int4</td>
+            <td class="tg-c3ow">79.31%</td>
+            <td class="tg-c3ow">18.51%</td>
+            <td class="tg-c3ow">10.38%</td>
+            <td class="tg-c3ow">51.81%</td>
+            <td class="tg-c3ow">45.37%</td>
+            <td class="tg-c3ow">34.22%</td>
+            <td class="tg-c3ow">65.29%</td>
+            <td class="tg-c3ow">57.06%</td>
+            <td class="tg-c3ow">42.90%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-8B-Instruct</td>
+            <td class="tg-c3ow">89.00%</td>
+            <td class="tg-c3ow">28.32%</td>
+            <td class="tg-c3ow">5.07%</td>
+            <td class="tg-c3ow">56.26%</td>
+            <td class="tg-c3ow">46.56%</td>
+            <td class="tg-c3ow">37.73%</td>
+            <td class="tg-c3ow">63.22%</td>
+            <td class="tg-c3ow">52.31%</td>
+            <td class="tg-c3ow">42.38%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-7B-Instruct</td>
+            <td class="tg-c3ow">76.08%</td>
+            <td class="tg-c3ow">26.00%</td>
+            <td class="tg-c3ow">6.91%</td>
+            <td class="tg-c3ow">47.03%</td>
+            <td class="tg-c3ow">39.06%</td>
+            <td class="tg-c3ow">29.89%</td>
+            <td class="tg-c3ow">61.81%</td>
+            <td class="tg-c3ow">51.26%</td>
+            <td class="tg-c3ow">39.14%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Ministral-8B-Instruct-2410</td>
+            <td class="tg-c3ow">60.82%</td>
+            <td class="tg-c3ow">49.87%</td>
+            <td class="tg-c3ow">4.70%</td>
+            <td class="tg-c3ow">24.92%</td>
+            <td class="tg-c3ow">12.34%</td>
+            <td class="tg-c3ow">9.83%</td>
+            <td class="tg-c3ow">41.01%</td>
+            <td class="tg-c3ow">20.20%</td>
+            <td class="tg-c3ow">16.02%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">xLAM-7b-fc-r</td>
+            <td class="tg-c3ow">90.10%</td>
+            <td class="tg-c3ow">62.67%</td>
+            <td class="tg-c3ow">1.00%</td>
+            <td class="tg-c3ow">30.72%</td>
+            <td class="tg-c3ow">13.63%</td>
+            <td class="tg-c3ow">11.20%</td>
+            <td class="tg-c3ow">34.09%</td>
+            <td class="tg-c3ow">15.14%</td>
+            <td class="tg-c3ow">12.44%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">ToolACE-8B</td>
+            <td class="tg-c3ow">52.64%</td>
+            <td class="tg-c3ow">83.67%</td>
+            <td class="tg-c3ow">0.23%</td>
+            <td class="tg-c3ow">7.21%</td>
+            <td class="tg-c3ow">0.14%</td>
+            <td class="tg-c3ow">0.00%</td>
+            <td class="tg-c3ow">13.56%</td>
+            <td class="tg-c3ow">0.27%</td>
+            <td class="tg-c3ow">0.00%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow" rowspan="8">w/ SO</td>
+            <td class="tg-c3ow">GPT-4o</td>
+            <td class="tg-c3ow">74.91%</td>
+            <td class="tg-c3ow">16.37%</td>
+            <td class="tg-c3ow">4.26%</td>
+            <td class="tg-c3ow">55.08%</td>
+            <td class="tg-c3ow">48.62%</td>
+            <td class="tg-c3ow">40.68%</td>
+            <td class="tg-c3ow">73.56%</td>
+            <td class="tg-c3ow">64.82%</td>
+            <td class="tg-c3ow">54.19%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-70B-Instruct-INT4</td>
+            <td class="tg-c3ow">85.63%</td>
+            <td class="tg-c3ow">24.89%</td>
+            <td class="tg-c3ow">1.71%</td>
+            <td class="tg-c3ow">56.74%</td>
+            <td class="tg-c3ow">47.64%</td>
+            <td class="tg-c3ow">34.98%</td>
+            <td class="tg-c3ow">66.29%</td>
+            <td class="tg-c3ow">55.63%</td>
+            <td class="tg-c3ow">40.82%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-72B-Instruct-Int4</td>
+            <td class="tg-c3ow">79.10%</td>
+            <td class="tg-c3ow">19.11%</td>
+            <td class="tg-c3ow">9.81%</td>
+            <td class="tg-c3ow">51.40%</td>
+            <td class="tg-c3ow">44.61%</td>
+            <td class="tg-c3ow">33.67%</td>
+            <td class="tg-c3ow">64.93%</td>
+            <td class="tg-c3ow">56.16%</td>
+            <td class="tg-c3ow">42.25%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-8B-Instruct</td>
+            <td class="tg-c3ow">89.00%</td>
+            <td class="tg-c3ow">30.72%</td>
+            <td class="tg-c3ow">3.69%</td>
+            <td class="tg-c3ow">52.46%</td>
+            <td class="tg-c3ow">42.45%</td>
+            <td class="tg-c3ow">30.51%</td>
+            <td class="tg-c3ow">58.96%</td>
+            <td class="tg-c3ow">47.69%</td>
+            <td class="tg-c3ow">34.28%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-7B-Instruct</td>
+            <td class="tg-c3ow">76.35%</td>
+            <td class="tg-c3ow">29.11%</td>
+            <td class="tg-c3ow">4.58%</td>
+            <td class="tg-c3ow">43.35%</td>
+            <td class="tg-c3ow">35.59%</td>
+            <td class="tg-c3ow">23.50%</td>
+            <td class="tg-c3ow">56.82%</td>
+            <td class="tg-c3ow">46.55%</td>
+            <td class="tg-c3ow">30.70%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Ministral-8B-Instruct-2410</td>
+            <td class="tg-c3ow">60.82%</td>
+            <td class="tg-c3ow">53.40%</td>
+            <td class="tg-c3ow">2.93%</td>
+            <td class="tg-c3ow">23.31%</td>
+            <td class="tg-c3ow">11.46%</td>
+            <td class="tg-c3ow">8.25%</td>
+            <td class="tg-c3ow">38.40%</td>
+            <td class="tg-c3ow">18.71%</td>
+            <td class="tg-c3ow">13.36%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">xLAM-7b-fc-r</td>
+            <td class="tg-c3ow">90.10%</td>
+            <td class="tg-c3ow">67.51%</td>
+            <td class="tg-c3ow">0.89%</td>
+            <td class="tg-c3ow">24.62%</td>
+            <td class="tg-c3ow">11.89%</td>
+            <td class="tg-c3ow">8.25%</td>
+            <td class="tg-c3ow">27.32%</td>
+            <td class="tg-c3ow">13.22%</td>
+            <td class="tg-c3ow">9.17%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">ToolACE-8B</td>
+            <td class="tg-c3ow">52.71%</td>
+            <td class="tg-c3ow">84.45%</td>
+            <td class="tg-c3ow">0.16%</td>
+            <td class="tg-c3ow">6.63%</td>
+            <td class="tg-c3ow">0.12%</td>
+            <td class="tg-c3ow">0.00%</td>
+            <td class="tg-c3ow">12.40%</td>
+            <td class="tg-c3ow">0.24%</td>
+            <td class="tg-c3ow">0.00%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow" rowspan="8">w/o mSv</td>
+            <td class="tg-c3ow">GPT-4o</td>
+            <td class="tg-c3ow">75.25%</td>
+            <td class="tg-c3ow">15.27%</td>
+            <td class="tg-c3ow">5.64%</td>
+            <td class="tg-c3ow">56.37%</td>
+            <td class="tg-c3ow">51.01%</td>
+            <td class="tg-c3ow">43.65%</td>
+            <td class="tg-c3ow">74.91%</td>
+            <td class="tg-c3ow">67.78%</td>
+            <td class="tg-c3ow">57.99%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-70B-Instruct-INT4</td>
+            <td class="tg-c3ow">86.45%</td>
+            <td class="tg-c3ow">22.34%</td>
+            <td class="tg-c3ow">2.14%</td>
+            <td class="tg-c3ow">60.60%</td>
+            <td class="tg-c3ow">52.46%</td>
+            <td class="tg-c3ow">44.77%</td>
+            <td class="tg-c3ow">70.10%</td>
+            <td class="tg-c3ow">60.68%</td>
+            <td class="tg-c3ow">51.79%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-72B-Instruct-Int4</td>
+            <td class="tg-c3ow">80.80%</td>
+            <td class="tg-c3ow">18.50%</td>
+            <td class="tg-c3ow">9.12%</td>
+            <td class="tg-c3ow">53.70%</td>
+            <td class="tg-c3ow">48.68%</td>
+            <td class="tg-c3ow">39.04%</td>
+            <td class="tg-c3ow">66.45%</td>
+            <td class="tg-c3ow">60.25%</td>
+            <td class="tg-c3ow">48.31%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-8B-Instruct</td>
+            <td class="tg-c3ow">89.08%</td>
+            <td class="tg-c3ow">28.71%</td>
+            <td class="tg-c3ow">4.58%</td>
+            <td class="tg-c3ow">56.23%</td>
+            <td class="tg-c3ow">47.27%</td>
+            <td class="tg-c3ow">39.69%</td>
+            <td class="tg-c3ow">63.12%</td>
+            <td class="tg-c3ow">53.06%</td>
+            <td class="tg-c3ow">44.56%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-7B-Instruct</td>
+            <td class="tg-c3ow">77.51%</td>
+            <td class="tg-c3ow">25.73%</td>
+            <td class="tg-c3ow">6.73%</td>
+            <td class="tg-c3ow">48.31%</td>
+            <td class="tg-c3ow">41.38%</td>
+            <td class="tg-c3ow">33.20%</td>
+            <td class="tg-c3ow">62.33%</td>
+            <td class="tg-c3ow">53.38%</td>
+            <td class="tg-c3ow">42.83%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Ministral-8B-Instruct-2410</td>
+            <td class="tg-c3ow">63.21%</td>
+            <td class="tg-c3ow">49.82%</td>
+            <td class="tg-c3ow">4.48%</td>
+            <td class="tg-c3ow">25.87%</td>
+            <td class="tg-c3ow">13.41%</td>
+            <td class="tg-c3ow">11.00%</td>
+            <td class="tg-c3ow">40.93%</td>
+            <td class="tg-c3ow">21.21%</td>
+            <td class="tg-c3ow">17.41%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">xLAM-7b-fc-r</td>
+            <td class="tg-c3ow">89.74%</td>
+            <td class="tg-c3ow">62.38%</td>
+            <td class="tg-c3ow">0.96%</td>
+            <td class="tg-c3ow">30.82%</td>
+            <td class="tg-c3ow">14.33%</td>
+            <td class="tg-c3ow">12.22%</td>
+            <td class="tg-c3ow">34.34%</td>
+            <td class="tg-c3ow">15.97%</td>
+            <td class="tg-c3ow">13.62%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">ToolACE-8B</td>
+            <td class="tg-c3ow">55.22%</td>
+            <td class="tg-c3ow">82.40%</td>
+            <td class="tg-c3ow">0.20%</td>
+            <td class="tg-c3ow">8.06%</td>
+            <td class="tg-c3ow">0.09%</td>
+            <td class="tg-c3ow">0.00%</td>
+            <td class="tg-c3ow">14.59%</td>
+            <td class="tg-c3ow">0.17%</td>
+            <td class="tg-c3ow">0.00%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow" rowspan="8">w/ mSv</td>
+            <td class="tg-c3ow">GPT-4o</td>
+            <td class="tg-c3ow">76.01%</td>
+            <td class="tg-c3ow">14.36%</td>
+            <td class="tg-c3ow">6.26%</td>
+            <td class="tg-c3ow">48.14%</td>
+            <td class="tg-c3ow">41.25%</td>
+            <td class="tg-c3ow">16.74%</td>
+            <td class="tg-c3ow">63.34%</td>
+            <td class="tg-c3ow">54.28%</td>
+            <td class="tg-c3ow">22.02%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-70B-Instruct-INT4</td>
+            <td class="tg-c3ow">86.45%</td>
+            <td class="tg-c3ow">22.82%</td>
+            <td class="tg-c3ow">4.52%</td>
+            <td class="tg-c3ow">55.53%</td>
+            <td class="tg-c3ow">44.59%</td>
+            <td class="tg-c3ow">26.05%</td>
+            <td class="tg-c3ow">64.23%</td>
+            <td class="tg-c3ow">51.58%</td>
+            <td class="tg-c3ow">30.14%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-72B-Instruct-Int4</td>
+            <td class="tg-c3ow">80.52%</td>
+            <td class="tg-c3ow">17.68%</td>
+            <td class="tg-c3ow">8.32%</td>
+            <td class="tg-c3ow">51.93%</td>
+            <td class="tg-c3ow">43.12%</td>
+            <td class="tg-c3ow">28.59%</td>
+            <td class="tg-c3ow">64.49%</td>
+            <td class="tg-c3ow">53.55%</td>
+            <td class="tg-c3ow">35.51%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-8B-Instruct</td>
+            <td class="tg-c3ow">89.08%</td>
+            <td class="tg-c3ow">29.06%</td>
+            <td class="tg-c3ow">4.72%</td>
+            <td class="tg-c3ow">50.60%</td>
+            <td class="tg-c3ow">39.49%</td>
+            <td class="tg-c3ow">20.79%</td>
+            <td class="tg-c3ow">56.79%</td>
+            <td class="tg-c3ow">44.33%</td>
+            <td class="tg-c3ow">23.33%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-7B-Instruct</td>
+            <td class="tg-c3ow">77.79%</td>
+            <td class="tg-c3ow">26.26%</td>
+            <td class="tg-c3ow">5.64%</td>
+            <td class="tg-c3ow">42.71%</td>
+            <td class="tg-c3ow">33.25%</td>
+            <td class="tg-c3ow">14.01%</td>
+            <td class="tg-c3ow">54.90%</td>
+            <td class="tg-c3ow">42.74%</td>
+            <td class="tg-c3ow">18.01%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Ministral-8B-Instruct-2410</td>
+            <td class="tg-c3ow">62.93%</td>
+            <td class="tg-c3ow">46.33%</td>
+            <td class="tg-c3ow">3.47%</td>
+            <td class="tg-c3ow">22.71%</td>
+            <td class="tg-c3ow">10.16%</td>
+            <td class="tg-c3ow">2.92%</td>
+            <td class="tg-c3ow">36.09%</td>
+            <td class="tg-c3ow">16.14%</td>
+            <td class="tg-c3ow">4.63%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">xLAM-7b-fc-r</td>
+            <td class="tg-c3ow">89.74%</td>
+            <td class="tg-c3ow">57.47%</td>
+            <td class="tg-c3ow">2.29%</td>
+            <td class="tg-c3ow">26.10%</td>
+            <td class="tg-c3ow">10.72%</td>
+            <td class="tg-c3ow">2.82%</td>
+            <td class="tg-c3ow">29.09%</td>
+            <td class="tg-c3ow">11.95%</td>
+            <td class="tg-c3ow">3.14%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">ToolACE-8B</td>
+            <td class="tg-c3ow">55.31%</td>
+            <td class="tg-c3ow">75.31%</td>
+            <td class="tg-c3ow">0.15%</td>
+            <td class="tg-c3ow">8.46%</td>
+            <td class="tg-c3ow">0.07%</td>
+            <td class="tg-c3ow">0.00%</td>
+            <td class="tg-c3ow">15.29%</td>
+            <td class="tg-c3ow">0.13%</td>
+            <td class="tg-c3ow">0.00%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow" rowspan="8">w/o External</td>
+            <td class="tg-c3ow">GPT-4o</td>
+            <td class="tg-c3ow">71.42%</td>
+            <td class="tg-c3ow">8.92%</td>
+            <td class="tg-c3ow">3.57%</td>
+            <td class="tg-c3ow">59.64%</td>
+            <td class="tg-c3ow">54.62%</td>
+            <td class="tg-c3ow">48.57%</td>
+            <td class="tg-c3ow">83.50%</td>
+            <td class="tg-c3ow">76.47%</td>
+            <td class="tg-c3ow">67.99%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-70B-Instruct-INT4</td>
+            <td class="tg-c3ow">85.30%</td>
+            <td class="tg-c3ow">15.41%</td>
+            <td class="tg-c3ow">1.57%</td>
+            <td class="tg-c3ow">66.33%</td>
+            <td class="tg-c3ow">57.17%</td>
+            <td class="tg-c3ow">49.59%</td>
+            <td class="tg-c3ow">77.76%</td>
+            <td class="tg-c3ow">67.02%</td>
+            <td class="tg-c3ow">58.13%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-72B-Instruct-Int4</td>
+            <td class="tg-c3ow">77.95%</td>
+            <td class="tg-c3ow">13.41%</td>
+            <td class="tg-c3ow">9.90%</td>
+            <td class="tg-c3ow">54.57%</td>
+            <td class="tg-c3ow">50.34%</td>
+            <td class="tg-c3ow">41.02%</td>
+            <td class="tg-c3ow">70.00%</td>
+            <td class="tg-c3ow">64.57%</td>
+            <td class="tg-c3ow">52.61%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-8B-Instruct</td>
+            <td class="tg-c3ow">88.97%</td>
+            <td class="tg-c3ow">20.44%</td>
+            <td class="tg-c3ow">4.04%</td>
+            <td class="tg-c3ow">63.73%</td>
+            <td class="tg-c3ow">54.29%</td>
+            <td class="tg-c3ow">45.71%</td>
+            <td class="tg-c3ow">71.62%</td>
+            <td class="tg-c3ow">61.02%</td>
+            <td class="tg-c3ow">51.37%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-7B-Instruct</td>
+            <td class="tg-c3ow">74.28%</td>
+            <td class="tg-c3ow">16.95%</td>
+            <td class="tg-c3ow">6.26%</td>
+            <td class="tg-c3ow">52.04%</td>
+            <td class="tg-c3ow">45.02%</td>
+            <td class="tg-c3ow">36.73%</td>
+            <td class="tg-c3ow">70.05%</td>
+            <td class="tg-c3ow">60.61%</td>
+            <td class="tg-c3ow">49.45%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Ministral-8B-Instruct-2410</td>
+            <td class="tg-c3ow">59.18%</td>
+            <td class="tg-c3ow">42.71%</td>
+            <td class="tg-c3ow">3.95%</td>
+            <td class="tg-c3ow">28.23%</td>
+            <td class="tg-c3ow">14.41%</td>
+            <td class="tg-c3ow">11.83%</td>
+            <td class="tg-c3ow">47.71%</td>
+            <td class="tg-c3ow">24.35%</td>
+            <td class="tg-c3ow">19.99%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">xLAM-7b-fc-r</td>
+            <td class="tg-c3ow">90.20%</td>
+            <td class="tg-c3ow">54.29%</td>
+            <td class="tg-c3ow">0.86%</td>
+            <td class="tg-c3ow">38.23%</td>
+            <td class="tg-c3ow">20.93%</td>
+            <td class="tg-c3ow">17.55%</td>
+            <td class="tg-c3ow">42.39%</td>
+            <td class="tg-c3ow">23.21%</td>
+            <td class="tg-c3ow">19.45%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">ToolACE-8B</td>
+            <td class="tg-c3ow">55.10%</td>
+            <td class="tg-c3ow">78.67%</td>
+            <td class="tg-c3ow">0.27%</td>
+            <td class="tg-c3ow">9.65%</td>
+            <td class="tg-c3ow">0.14%</td>
+            <td class="tg-c3ow">0.00%</td>
+            <td class="tg-c3ow">17.50%</td>
+            <td class="tg-c3ow">0.25%</td>
+            <td class="tg-c3ow">0.00%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow" rowspan="8">w/ External</td>
+            <td class="tg-c3ow">GPT-4o</td>
+            <td class="tg-c3ow">73.87%</td>
+            <td class="tg-c3ow">11.14%</td>
+            <td class="tg-c3ow">8.91%</td>
+            <td class="tg-c3ow">52.81%</td>
+            <td class="tg-c3ow">50.78%</td>
+            <td class="tg-c3ow">38.57%</td>
+            <td class="tg-c3ow">71.49%</td>
+            <td class="tg-c3ow">68.73%</td>
+            <td class="tg-c3ow">52.20%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-70B-Instruct-INT4</td>
+            <td class="tg-c3ow">84.89%</td>
+            <td class="tg-c3ow">20.39%</td>
+            <td class="tg-c3ow">3.16%</td>
+            <td class="tg-c3ow">55.77%</td>
+            <td class="tg-c3ow">49.28%</td>
+            <td class="tg-c3ow">34.48%</td>
+            <td class="tg-c3ow">65.69%</td>
+            <td class="tg-c3ow">58.05%</td>
+            <td class="tg-c3ow">40.62%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-72B-Instruct-Int4</td>
+            <td class="tg-c3ow">78.16%</td>
+            <td class="tg-c3ow">15.86%</td>
+            <td class="tg-c3ow">12.82%</td>
+            <td class="tg-c3ow">48.73%</td>
+            <td class="tg-c3ow">46.52%</td>
+            <td class="tg-c3ow">33.46%</td>
+            <td class="tg-c3ow">62.34%</td>
+            <td class="tg-c3ow">59.51%</td>
+            <td class="tg-c3ow">42.81%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-8B-Instruct</td>
+            <td class="tg-c3ow">88.97%</td>
+            <td class="tg-c3ow">24.96%</td>
+            <td class="tg-c3ow">9.59%</td>
+            <td class="tg-c3ow">49.22%</td>
+            <td class="tg-c3ow">43.96%</td>
+            <td class="tg-c3ow">25.51%</td>
+            <td class="tg-c3ow">55.32%</td>
+            <td class="tg-c3ow">49.40%</td>
+            <td class="tg-c3ow">28.66%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-7B-Instruct</td>
+            <td class="tg-c3ow">74.48%</td>
+            <td class="tg-c3ow">23.91%</td>
+            <td class="tg-c3ow">7.68%</td>
+            <td class="tg-c3ow">42.18%</td>
+            <td class="tg-c3ow">38.95%</td>
+            <td class="tg-c3ow">24.69%</td>
+            <td class="tg-c3ow">56.62%</td>
+            <td class="tg-c3ow">52.29%</td>
+            <td class="tg-c3ow">33.15%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Ministral-8B-Instruct-2410</td>
+            <td class="tg-c3ow">58.77%</td>
+            <td class="tg-c3ow">46.15%</td>
+            <td class="tg-c3ow">9.06%</td>
+            <td class="tg-c3ow">20.42%</td>
+            <td class="tg-c3ow">11.68%</td>
+            <td class="tg-c3ow">6.12%</td>
+            <td class="tg-c3ow">34.74%</td>
+            <td class="tg-c3ow">19.88%</td>
+            <td class="tg-c3ow">10.41%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">xLAM-7b-fc-r</td>
+            <td class="tg-c3ow">90.20%</td>
+            <td class="tg-c3ow">60.21%</td>
+            <td class="tg-c3ow">1.87%</td>
+            <td class="tg-c3ow">27.81%</td>
+            <td class="tg-c3ow">17.50%</td>
+            <td class="tg-c3ow">10.81%</td>
+            <td class="tg-c3ow">30.83%</td>
+            <td class="tg-c3ow">19.40%</td>
+            <td class="tg-c3ow">11.99%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">ToolACE-8B</td>
+            <td class="tg-c3ow">55.30%</td>
+            <td class="tg-c3ow">76.98%</td>
+            <td class="tg-c3ow">2.69%</td>
+            <td class="tg-c3ow">6.76%</td>
+            <td class="tg-c3ow">0.14%</td>
+            <td class="tg-c3ow">0.00%</td>
+            <td class="tg-c3ow">12.22%</td>
+            <td class="tg-c3ow">0.25%</td>
+            <td class="tg-c3ow">0.00%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow" rowspan="8">Overall</td>
+            <td class="tg-c3ow">GPT-4o</td>
+            <td class="tg-c3ow">73.25%</td>
+            <td class="tg-c3ow">14.78%</td>
+            <td class="tg-c3ow">5.26%</td>
+            <td class="tg-c3ow">53.98%</td>
+            <td class="tg-c3ow">47.51%</td>
+            <td class="tg-c3ow">37.96%</td>
+            <td class="tg-c3ow">73.76%</td>
+            <td class="tg-c3ow">64.88%</td>
+            <td class="tg-c3ow">51.93%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-70B-Instruct-INT4</td>
+            <td class="tg-c3ow">85.01%</td>
+            <td class="tg-c3ow">20.40%</td>
+            <td class="tg-c3ow">2.51%</td>
+            <td class="tg-c3ow">59.57%</td>
+            <td class="tg-c3ow">51.55%</td>
+            <td class="tg-c3ow">39.91%</td>
+            <td class="tg-c3ow">70.09%</td>
+            <td class="tg-c3ow">60.66%</td>
+            <td class="tg-c3ow">46.96%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-72B-Instruct-Int4</td>
+            <td class="tg-c3ow">77.34%</td>
+            <td class="tg-c3ow">17.70%</td>
+            <td class="tg-c3ow">9.26%</td>
+            <td class="tg-c3ow">51.35%</td>
+            <td class="tg-c3ow">45.13%</td>
+            <td class="tg-c3ow">34.29%</td>
+            <td class="tg-c3ow">66.43%</td>
+            <td class="tg-c3ow">58.34%</td>
+            <td class="tg-c3ow">44.32%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Llama-3.1-8B-Instruct</td>
+            <td class="tg-c3ow">88.76%</td>
+            <td class="tg-c3ow">27.43%</td>
+            <td class="tg-c3ow">5.63%</td>
+            <td class="tg-c3ow">54.85%</td>
+            <td class="tg-c3ow">46.08%</td>
+            <td class="tg-c3ow">34.25%</td>
+            <td class="tg-c3ow">61.79%</td>
+            <td class="tg-c3ow">51.92%</td>
+            <td class="tg-c3ow">38.59%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Qwen2.5-7B-Instruct</td>
+            <td class="tg-c3ow">74.88%</td>
+            <td class="tg-c3ow">26.07%</td>
+            <td class="tg-c3ow">5.92%</td>
+            <td class="tg-c3ow">45.40%</td>
+            <td class="tg-c3ow">38.10%</td>
+            <td class="tg-c3ow">27.24%</td>
+            <td class="tg-c3ow">60.66%</td>
+            <td class="tg-c3ow">50.90%</td>
+            <td class="tg-c3ow">36.43%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">Ministral-8B-Instruct-2410</td>
+            <td class="tg-c3ow">58.50%</td>
+            <td class="tg-c3ow">50.36%</td>
+            <td class="tg-c3ow">4.78%</td>
+            <td class="tg-c3ow">22.78%</td>
+            <td class="tg-c3ow">11.24%</td>
+            <td class="tg-c3ow">7.64%</td>
+            <td class="tg-c3ow">38.91%</td>
+            <td class="tg-c3ow">19.14%</td>
+            <td class="tg-c3ow">13.01%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">xLAM-7b-fc-r</td>
+            <td class="tg-c3ow">90.37%</td>
+            <td class="tg-c3ow">62.76%</td>
+            <td class="tg-c3ow">1.35%</td>
+            <td class="tg-c3ow">28.65%</td>
+            <td class="tg-c3ow">13.73%</td>
+            <td class="tg-c3ow">9.73%</td>
+            <td class="tg-c3ow">31.71%</td>
+            <td class="tg-c3ow">15.20%</td>
+            <td class="tg-c3ow">10.76%</td>
+          </tr>
+          <tr>
+            <td class="tg-c3ow">ToolACE-8B</td>
+            <td class="tg-c3ow">51.24%</td>
+            <td class="tg-c3ow">81.84%</td>
+            <td class="tg-c3ow">0.51%</td>
+            <td class="tg-c3ow">6.84%</td>
+            <td class="tg-c3ow">0.21%</td>
+            <td class="tg-c3ow">0.00%</td>
+            <td class="tg-c3ow">13.21%</td>
+            <td class="tg-c3ow">0.43%</td>
+            <td class="tg-c3ow">0.00%</td>
+          </tr>
+        </tbody></table>
 </body>
 </html>
