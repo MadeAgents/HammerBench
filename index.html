@@ -39,73 +39,50 @@
     </style>
 </head>
 <body>
-    <h1>HammerBench</h1>
-    <p>
-        The source code and dataset mentioned in the paper 
-        <a href="https://arxiv.org/pdf/">HammerBench: Fine-Grained Evaluation for Function-Calling with Multi-turn Human-LLM Interactions</a>.
-    </p>
+  <h1><strong>HammerBench: Fine-Grained Evaluation for Function-Calling with Multi-turn Human-LLM Interactions</strong></h1>
 
-    <h2>Overview</h2>
-    <p><strong>HammerBench</strong> is a benchmark that closely aligns with real-world slot-filling tasks in interactive dialogues. You can evaluate the performance of LLMs under various circumstances as follows:</p>
-    <ul>
-        <li><strong>Imperfect instruction</strong>: The user query that only gives a few required parameter values.</li>
-        <li><strong>Diverse question-answer trajectories</strong>: Users may provide more or fewer responses about missing arguments than expected.</li>
-        <li><strong>Intent/argument shifts</strong>: Users may frequently modify their intents or arguments due to errors or other reasons during the interaction.</li>
-        <li><strong>External individual information</strong>: Users may refer to external individual information indirectly, often using pronouns instead of directly specifying slot values.</li>
-    </ul>
-    
-    <div class="center">
-        <img src="example datasets.png" alt="Example Datasets" width="1000px">
-    </div>
+  <p><a href="https://arxiv.org/pdf/">link</a></p>
+  
+  <h2>Abstract</h2>
+  
+  <p>Evaluating models&#39; capabilities of human-LLM interaction remains a challenging problem due to the inherent complexity and openness of dialogue processes. To more effectively assess models&#39; abilities in multi-turn functioncalling, we introduce a novel benchmark that provides evaluations closely aligned with realworld slot-filling tasks in interactive dialogues. This benchmark accounts for a variety of potential user scenarios, including diverse questionanswer trajectories, argument shifts, and the use of external individual information through pronouns. It offers a comprehensive and finegrained evaluation, highlighting different aspects of model performance, particularly in
+  the aforementioned contexts. We also describe the process of constructing our test set, which underwent multiple rounds of human validation. Experimental results on several existing large language models (LLMs) demonstrate that parameter name errors are the primary factor contributing to the decline in functioncalling success rates.</p>
+  
+  <h2>Characteristics</h2>
+  
+  <p>Comparing to the existing benchmarks, there are four characteristics for our benchmark:</p>
+  
+  <ul><li><strong>imperfect instruction</strong> :The user query that only gives few required parameter values.</li><li><strong>diverse question-answer trajectories</strong> :users may provide more or fewer responses about missing arguments than expected.</li><li><strong>intent/argument shifts</strong> :users may frequently modify their intents or arguments due to errors or other reasons during the interaction;</li><li><strong>external individual information</strong> : users may refer to external individual information indirectly, often using pronouns instead of directly specifying slot values.</li></ul>
+  
+  <div class="center">
+    <img src="comparison.png" alt="Single-turn Results" width="1000px">
+  </div>
+  
+  <p>Some data examples are shown in the following figure:
+  &lt;div align=&quot;center&quot;&gt;
+  &lt;img src=&quot;&quot; width=&quot;1000px&quot;&gt;
+  &lt;/div&gt;</p>
+  <div class="center">
+    <img src="example datasets.png" alt="Single-turn Results" width="1000px">
+  </div>
+  
+  <h2>Data Construction</h2>
+  
+  <p>The construction methodology of our datasets is illustrated in the following diagram:
+  &lt;div align=&quot;center&quot;&gt;
+  &lt;img src=&quot;generation pipline.png&quot; width=&quot;1000px&quot;&gt;
+  &lt;/div&gt;</p>
+  
+  <ul><li><strong>toolset construction</strong> : The construction of the toolset was inspired by selecting the most popular apps from the APP Store. We use LLMs to initially generate descriptions of tool descriptions, then manually revised. Subsequently, JSON format tools are generated based on these descriptions. The entire process includes multiple rounds of manual inspection and correction, ultimately resulting in a toolset comprising 1,063 tools.</li><li><strong>basic data construction</strong> : Based on the self-instruct method we further generate instances by outputing arguments first and then queries, and strictly controll the parameters that appear in the generated arguments. Additionally, we designed an LLM-based check module to filter out low-quality data, and manually completed the error data.</li><li><strong>fine-grained data construction</strong> : For example, &#39;External individual information&#39; module can convert any query-label pairs into the dataset containing external individual information. And we also generate datasets about diverse Q&amp;A trajectories and intent/argument shifts. </li></ul>
+  
+  <p>For more details, please refer to our paper.</p>
 
-    <h2>Data</h2>
-    <p>All of our datasets are in "en/" or "zh/", using the ShareGPT format.</p>
-    <div class="codeblock">
-        <pre>
-{
-    "id": 17,
-    "messages": [
-        {
-            "role": "user",
-            "content": "user query"
-        },
-        {
-            "role": "function call",
-            "content": {"name": "<function name>", "arguments": "<arguments>"}
-        }
-        ...
-    ],
-    "multiple_tools": "<candidate tools>",
-    "single_tool": "<ground truth function information>"
-}
-        </pre>
-    </div>
-    <p>
-        The 'id' represents the index in HammerBench_Based.json for data before transformation (e.g., w/o SO...). It will be used in 'evaluation/align_msg.py' to get the original sQsA dataset to compare the metric differences before and after the transformation. The detailed descriptions of different data types are in our paper. They are saved in:
-    </p>
-    <ul>
-        <li>ST_Perfect: en/single-turn/ST_Perfect.json</li>
-        <li>ST_Imperfect: en/single-turn/ST_Imperfect.json</li>
-        <li>ST_External: en/single-turn/ST_External.json</li>
-        <li>Irrelevant: en/single-turn/(ir_ST_External.json, ir_ST_Perfect.json, ir_ST_Imperfect.json)</li>
-        <li>sQsA: en/multi-turn/HammerBench_Based.json</li>
-        <li>mQmA: en/multi-turn/HammerBench_mQmA.json</li>
-        <li>mQsA: en/multi-turn/HammerBench_mQsA.json</li>
-        <li>sQmA: en/multi-turn/HammerBench_sQmA.json</li>
-        <li>IS: en/multi-turn/HammerBench_IS.json</li>
-        <li>SO: en/multi-turn/HammerBench_SO_case1.json, SO_case2.json</li>
-        <li>mSv: en/multi-turn/HammerBench_mSv.json</li>
-        <li>External: en/multi-turn/HammerBench_External.json</li>
-    </ul>
-    <p>All datasets are transformed from the 'HammerBench_Based.json' in the sQsA format. The files in 'en/multi-turn/snapshot_id' record the ids of turns for SO and External transformations occurring to evaluate the snapshots at the moment of slot overriding (SO) and answering with pronouns (External).</p>
-    <p>As for the Chinese dataset, please see 'zh/'.</p>
-
-    <h2>Evaluation</h2>
-    <p>We evaluate some LLMs in our datasets:</p>
+  <h3>Evaluations</h3>
+    <p>We break down conversations into snapshots for better evaluation, and evaluate some LLMs in our datasets. For single-turn:</p>
     <div class="center">
         <img src="single-turn results.png" alt="Single-turn Results" width="600px">
     </div>
-    
+    <p>For multi-turn:</p>
     <style type="text/css">
         .tg  {border-collapse:collapse;border-spacing:0;}
         .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
