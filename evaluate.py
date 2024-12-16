@@ -179,5 +179,5 @@ elif is_llm_judge:
         turn_completion_rates.append(turn_completion_rate)
         success_rate.append(success_rate0)
     print("Args_Acc LLM：", sum([x[0] for x in Args_Acc])/sum([x[1] for x in Args_Acc]))
-    print("轮次LLM check平均完成率 turn_completion_rates：", sum(turn_completion_rates)/(len(turn_completion_rates)+1e-9))
-    print("整体LLM check平均成功率 success_rate：", sum(success_rate)/(len(success_rate)+1e-9))
+    print("PR LLM：", sum(turn_completion_rates)/(len(turn_completion_rates)+1e-9))
+    print("SR LLM：", sum(success_rate)/(len(success_rate)+1e-9))

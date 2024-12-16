@@ -56,9 +56,9 @@ def LLM_eval(llm_inputs, llm_inputs_L, snap_shot_id, df, log_dir, language='en')
         turn_completion_rates.append(turn_completion_rate)
         success_rate.append(success_rate0)
 
-    print("Args_Acc：", sum([x[0] for x in Args_Acc])/sum([x[1] for x in Args_Acc]))
-    print("PR (LLM)：", sum(turn_completion_rates)/(len(turn_completion_rates)+1e-9))
-    print("SR (LLM)：", sum(success_rate)/(len(success_rate)+1e-9))
+    print("Args_Acc LLM：", sum([x[0] for x in Args_Acc])/sum([x[1] for x in Args_Acc]))
+    print("PR LLM：", sum(turn_completion_rates)/(len(turn_completion_rates)+1e-9))
+    print("SR LLM：", sum(success_rate)/(len(success_rate)+1e-9))
     with open(log_dir+'LLM_check_response.json', 'w') as fp:
         json.dump(response, fp ,indent=2, ensure_ascii=False)
     with open(log_dir+'LLM_check_L.json', 'w') as fp:
