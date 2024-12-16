@@ -28,10 +28,9 @@ def LLM_eval(llm_inputs, llm_inputs_L, snap_shot_id, df, log_dir, language='en')
     from vllm import LLM, SamplingParams
     sampling_params = SamplingParams(temperature=0.0, max_tokens=20)
     if language=='en':
-        model_path="/home/notebook/data/group/model_hub/huggingface/meta-llama/Meta-Llama-3.1-70B-Instruct-GPTQ-INT4"
-        model_path="/home/notebook/data/group/model_hub/huggingface/Qwen/Qwen2.5-1.5B-Instruct"
+        model_path="hugging-quants/Meta-Llama-3.1-70B-Instruct-GPTQ-INT4"
     elif language=='zh':
-        model_path="/home/notebook/data/group/model_hub/huggingface/Qwen/Qwen2.5-72B-Instruct-GPTQ-Int4"
+        model_path="Qwen/Qwen2.5-72B-Instruct-GPTQ-Int4"
     try:llm = LLM(model=model_path, tensor_parallel_size=1, max_model_len=6400, gpu_memory_utilization=0.88, dtype="bfloat16")  # , max_num_seqs=8
     except:llm = LLM(model=model_path, tensor_parallel_size=1, max_model_len=6400, gpu_memory_utilization=0.88, dtype="float32")
     tokenizer = llm.get_tokenizer()
@@ -47,7 +46,7 @@ def LLM_eval(llm_inputs, llm_inputs_L, snap_shot_id, df, log_dir, language='en')
         turn_flags = []
         for flag_llm in response[llm_inputs_L[i]: llm_inputs_L[i+1]]:
             turn_flags.append("True" in flag_llm)
-        # 加入PN判定
+        # 
         FC_res0 = json.loads(df.loc[i,'FC_res'])
         FC_res0 = [FC_res0[k] for k in snap_shot_id[i]]
         turn_flags = FN_PN(FC_res0, turn_flags)
@@ -58,8 +57,8 @@ def LLM_eval(llm_inputs, llm_inputs_L, snap_shot_id, df, log_dir, language='en')
         success_rate.append(success_rate0)
 
     print("Args_Acc：", sum([x[0] for x in Args_Acc])/sum([x[1] for x in Args_Acc]))
-    print("轮次LLM check平均完成率 turn_completion_rates：", sum(turn_completion_rates)/(len(turn_completion_rates)+1e-9))
-    print("整体LLM check平均成功率 success_rate：", sum(success_rate)/(len(success_rate)+1e-9))
+    print("PR (LLM)：", sum(turn_completion_rates)/(len(turn_completion_rates)+1e-9))
+    print("SR (LLM)：", sum(success_rate)/(len(success_rate)+1e-9))
     with open(log_dir+'LLM_check_response.json', 'w') as fp:
         json.dump(response, fp ,indent=2, ensure_ascii=False)
     with open(log_dir+'LLM_check_L.json', 'w') as fp:

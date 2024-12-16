@@ -35,7 +35,7 @@ For more details, please refer to our paper.
 
 ## Data
 Please download our dataset using the following link: [HammerBench](https://huggingface.co/datasets/MadeAgents/HammerBench)
-We give some examples of our datasets in 'data/', use the shareGPT format. 
+We give some examples of our datasets in 'data/', use the shareGPT format. But if you need to inference, please download all datasets!
 ```
 {
       'id':17,
@@ -130,7 +130,7 @@ bash test.sh Qwen2.5-7B-Instruct en
 bash evaluate.sh logs/Qwen2.5-7B-Instruct en
 ```
 
-You can set 'is_llm_judge = True' in evaluate.py and select model path in 'evaluation/llm_judge.py' to judge query-label-predict by LLMs.  The LLM judge prompt is in 'evaluation/prompt_judge.py'. And judge function is in 'evaluation/llm_judge.py'.
+You can set 'is_llm_judge = True' in evaluate.py and select model path in 'evaluation/llm_judge.py' to judge query-label-predict by LLMs (download [LLM](https://huggingface.co/hugging-quants/Meta-Llama-3.1-70B-Instruct-GPTQ-INT4) from huggingface).  The LLM judge prompt is in 'evaluation/prompt_judge.py'. And judge function is in 'evaluation/llm_judge.py'.
 You can change the snapshot_id list([[0],[1,2], [-1]...]) in 'evaluate.py' to evaluate different turn for each conversation.
 
 ### Post-processing log file

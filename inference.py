@@ -97,6 +97,8 @@ for i in range(len(sep_n)-1):
 
 data_type = os.path.split(data_path)[1][:-5]
 save_dir = f'logs/{language_tag}/'+os.path.split(model_path)[1]
+if not os.path.exists(f'logs/{language_tag}'):
+    os.mkdir(f'logs/{language_tag}')
 if not os.path.exists(save_dir):
     os.mkdir(save_dir)
 save_dir += f'/{data_type}/'

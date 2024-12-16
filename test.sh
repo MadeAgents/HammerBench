@@ -1,4 +1,4 @@
-# "/home/notebook/data/group/model_hub/huggingface/meta-llama/Meta-Llama-3.1-70B-Instruct-GPTQ-INT4"
+# "Meta-Llama-3.1-70B-Instruct-GPTQ-INT4"
 model_path=$1
 # 'en'
 language=$2
