@@ -2,7 +2,8 @@
 import json
 import sys, os
 from evaluation.process_output import parse_response, parse_mistral, parse_xlam, parse_toolace   # Post-processing here
-from evaluation.metrics import get_e2e_rougel, get_e2e_rougel_en, get_miss_redundant_num, LLM_label_param_zh, LLM_label_param
+from evaluation.metrics import get_e2e_rougel, get_e2e_rougel_en, get_miss_redundant_num
+from evaluation.prompt_judge import LLM_label_param_zh, LLM_label_param
 
 from evaluation.llm_judge import LLM_eval, calculate_turn, FN_PN
 

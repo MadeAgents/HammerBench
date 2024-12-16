@@ -7,27 +7,6 @@ from rouge import Rouge
 # from openai import OpenAI
 # client = OpenAI(api_key="None", base_url="http://10.237.50.193:8000/v1")
 
-from evaluation.prompt_judge import label_prompt, label_prompt_en
-def LLM_label_param(query, model_output, label):
-    label = dict(sorted(label.items(), key=lambda x:x[0]))
-    model_output = dict(sorted(model_output.items(), key=lambda x:x[0]))
-    model_input = label_prompt_en.replace("{query}", query).replace("{model_output}", json.dumps(model_output, ensure_ascii=False)).replace("{label}", json.dumps(label, ensure_ascii=False))
-    # response = client.chat.completions.create(model="llama3", messages=[{"role": "user", "content": model_input}], stop=["<|end_of_text|>","<|im_end|>"], temperature=0).choices[0].message.content
-    return model_input   # 没有服务则返回输入
-    if "True" in response:
-        return True
-    else:
-        return False
-def LLM_label_param_zh(query, model_output, label):
-    label = dict(sorted(label.items(), key=lambda x:x[0]))
-    model_output = dict(sorted(model_output.items(), key=lambda x:x[0]))
-    model_input = label_prompt.replace("{query}", query).replace("{model_output}", json.dumps(model_output, ensure_ascii=False)).replace("{label}", json.dumps(label, ensure_ascii=False))
-    # response = client.chat.completions.create(model="llama3", messages=[{"role": "user", "content": model_input}], stop=["<|end_of_text|>","<|im_end|>"], temperature=0).choices[0].message.content
-    return model_input   # 没有服务则返回输入
-    if "True" in response:
-        return True
-    else:
-        return False
 rouge = Rouge()
 
 def calculate_rouge_l_score_en(reference, hypothesis):

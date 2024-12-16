@@ -109,3 +109,29 @@ query: {query}
 label: {label}
 model_output: {model_output}
 answer:"""
+
+
+def LLM_label_param(query, model_output, label):
+    sys_prefix, user_prefix = '<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n', '<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n'
+    user_suffix = '<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n'
+    label = dict(sorted(label.items(), key=lambda x:x[0]))
+    model_output = dict(sorted(model_output.items(), key=lambda x:x[0]))
+    model_input = label_prompt_en.replace("{query}", query).replace("{model_output}", json.dumps(model_output, ensure_ascii=False)).replace("{label}", json.dumps(label, ensure_ascii=False))
+    # response = client.chat.completions.create(model="llama3", messages=[{"role": "user", "content": model_input}], stop=["<|end_of_text|>","<|im_end|>"], temperature=0).choices[0].message.content
+    return sys_prefix + user_prefix + model_input + user_suffix   # 没有服务则返回输入
+    if "True" in response:
+        return True
+    else:
+        return False
+def LLM_label_param_zh(query, model_output, label):
+    sys_prefix, user_prefix = '<|im_start|>system\n', '<|im_end|>\n<|im_start|>user\n'
+    user_suffix = '<|im_end|>\n<|im_start|>assistant\n'
+    label = dict(sorted(label.items(), key=lambda x:x[0]))
+    model_output = dict(sorted(model_output.items(), key=lambda x:x[0]))
+    model_input = label_prompt.replace("{query}", query).replace("{model_output}", json.dumps(model_output, ensure_ascii=False)).replace("{label}", json.dumps(label, ensure_ascii=False))
+    # response = client.chat.completions.create(model="llama3", messages=[{"role": "user", "content": model_input}], stop=["<|end_of_text|>","<|im_end|>"], temperature=0).choices[0].message.content
+    return sys_prefix + user_prefix + model_input + user_suffix   # 没有服务则返回输入
+    if "True" in response:
+        return True
+    else:
+        return False
