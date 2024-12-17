@@ -1,0 +1,183 @@
+[
+  {
+    "id": "Based_0_1",
+    "messages": [
+      {
+        "role": "user",
+        "content": "查一下我的车有没有违章记录"
+      },
+      {
+        "role": "function call",
+        "content": {
+          "name": "Navigation.TrafficViolations.queryViolation",
+          "arguments": {}
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "违章所在城市是哪个"
+      },
+      {
+        "role": "user",
+        "content": "违章所在城市是广州。"
+      },
+      {
+        "role": "function call",
+        "content": {
+          "name": "Navigation.TrafficViolations.queryViolation",
+          "arguments": {
+            "city": "广州"
+          }
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "请提供车牌号"
+      },
+      {
+        "role": "user",
+        "content": "我的车牌号是粤B67890。"
+      },
+      {
+        "role": "function call",
+        "content": {
+          "name": "Navigation.TrafficViolations.queryViolation",
+          "arguments": {
+            "city": "广州",
+            "plate_number": "粤B67890"
+          }
+        }
+      }
+    ],
+    "multiple_tools": [
+      {
+        "name": "Navigation.TrainTickets.queryPassengerTrainOrder",
+        "description": "查询乘客的火车票订单信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "passenger_id": {
+              "type": "string",
+              "description": "乘客身份证号"
+            },
+            "name": {
+              "type": "string",
+              "description": "乘客姓名"
+            },
+            "time": {
+              "type": "string",
+              "description": "时间"
+            }
+          },
+          "required": [
+            "passenger_id",
+            "name",
+            "time"
+          ]
+        }
+      },
+      {
+        "name": "Health.MedicalServices.getPatientMedicalRecord",
+        "description": "根据患者姓名等获取其病历信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "patient_name": {
+              "type": "string",
+              "description": "患者名称"
+            }
+          },
+          "required": [
+            "patient_name"
+          ]
+        }
+      },
+      {
+        "name": "Travel.ItineraryServices.viewTravelItinerary",
+        "description": "根据行程名或关键词查看用户已创建的旅行行程",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "旅行行程名称或关键词"
+            }
+          },
+          "required": [
+            "name"
+          ]
+        }
+      },
+      {
+        "name": "Navigation.TrafficViolations.queryViolation",
+        "description": "按车牌号、违章城市等条件搜索所有交通违章的记录",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "plate_number": {
+              "type": "string",
+              "description": "车牌号"
+            },
+            "city": {
+              "type": "string",
+              "description": "违章所在城市"
+            },
+            "time": {
+              "type": "string",
+              "description": "开单时间"
+            }
+          },
+          "required": [
+            "plate_number",
+            "city",
+            "time"
+          ]
+        }
+      },
+      {
+        "name": "ConvenientLiving.GovernmentServices.queryTrafficViolations",
+        "description": "查询用户车辆的交通违章信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "plate_number": {
+              "type": "string",
+              "description": "车辆的车牌号"
+            }
+          },
+          "required": [
+            "plate_number"
+          ]
+        }
+      }
+    ],
+    "single_tool": [
+      {
+        "name": "Navigation.TrafficViolations.queryViolation",
+        "description": "按车牌号、违章城市等条件搜索所有交通违章的记录",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "plate_number": {
+              "type": "string",
+              "description": "车牌号"
+            },
+            "city": {
+              "type": "string",
+              "description": "违章所在城市"
+            },
+            "time": {
+              "type": "string",
+              "description": "开单时间"
+            }
+          },
+          "required": [
+            "plate_number",
+            "city",
+            "time"
+          ]
+        }
+      }
+    ]
+  }
+]

@@ -38,11 +38,11 @@ Please download our dataset using the following link: [HammerBench](https://hugg
 We give some examples of our datasets in 'data/', use the shareGPT format. But if you need to inference, please download all datasets!
 ```
 {
-      'id':17,
+      'id':<data-type>_<conversation-id>_<turn-id>,
       'messages':[
             {
                   'role':'user'
-                  'content':'user query'
+                  'content':<user query>
             },
             {
                   'role':'function call'
@@ -54,59 +54,32 @@ We give some examples of our datasets in 'data/', use the shareGPT format. But i
       'single_tool':<ground truth function information>
 }
 ```
-While the 'id' represents the indice in HammerBench_Based.json for data before transformation (e.g. w/o SO...). It will be used in 'evaluation/align_msg.py' to get the origin sQsA dataset to compare the metrics difference before and after the transformation. 
+While the 'id' includes three elements: 
 
-The detail descriptions of different data types are in our paper. They are saved in:
+**data-type**: 
+<div align="center">
+<img src="imgs/Data_desc.png" width="1000px">
+</div>
 
-ST_Perfect : data/en/single-turn/ST_Perfect.json
+single-turn(ST-Perfect, ir-ST-Perfect, ST-Imperfect, ir-ST-Imperfect, ST-External, ir-ST-External) 
 
-ST_Imperfect : data/en/single-turn/ST_Imperfect.json
+multi-turn( Diverse Q&A (Based, mQmA, mQsA, sQmA), Intent shifts (IS), Argument shifts (SO-case1, SO-case2, mSv), External individual information (External))
 
-ST_External : data/en/single-turn/ST_External.json
+**conversation-id** represents the indice in 'Based' data-type for data before transformation (e.g. w/o SO...).
 
-irrelevant : data/en/single-turn/(ir_ST_External.json, ir_ST_Perfect.json, ir_ST_Imperfect.json)
+**turn-id** represents turn-id-th function calling snapshot in the conversation.
 
-sQsA : data/en/multi-turn/HammerBench_Based.json
+All datasets are transformed from the 'HammerBench_Based.json' in the sQsA format.
 
-mQmA : data/en/multi-turn/HammerBench_mQmA.json
-
-mQsA : data/en/multi-turn/HammerBench_mQsA.json
-
-sQmA : data/en/multi-turn/HammerBench_sQmA.json
-
-IS : data/en/multi-turn/HammerBench_IS.json
-
-SO : data/en/multi-turn/HammerBench_SO_case1.json(SO_case2.json)
-
-mSv : data/en/multi-turn/HammerBench_mSv.json
-
-External : data/en/multi-turn/HammerBench_External.json
-
-All datasets are transformed from the 'HammerBench_Based.json' in the sQsA format. The files in 'data/en/multi-turn/snapshot_id' record the id of turn for SO and External transformation occuring to evaluate the snapshots at the moment of slot overriding(SO) and answering with pronouns(External).
-
-As for Chinese dataset, please see 'data/zh'.
-
-## Inference
-### Install Dependencies
-
-You should install dependencies using the following command:
-
-```
-pip install -r requirements.txt
-```
-
-Use the following command for inference:
-```
-bash test.sh <model_path> <language>
-```
-The results will be saved in 'logs/model_name'.
+As for Chinese dataset, please see 'zh/'.
 
 
 ## Evaluation
 ### Evaluate the log file inferenced by LLMs
-evaluate.py requires two inputs: the MT_0.json file and the MT_res.json file. The logs/en/Qwen2.5-7B-Instruct/HammerBench_mQmA/MT_0.json and data/en/multi-turn/HammerBench_mQmA.json are the same. And the item of MT_res.json is inferenced by Qwen2.5-7B-Instruct as follows:
+evaluate.py requires inference_res.json file. the item of inference_res.json is inferenced by Qwen2.5-7B-Instruct as follows:
 ```
 {
+    "id": "Based_0_3",
     "input": "user:Check if my car has any illegal records\nassistant:What city is the violation located in?\nuser:The violating city is Guangzhou.\nassistant:Please provide the license plate number\nuser:My license plate number is Yue B67890.",
     "predict": "```json\n{\"name\": \"Navigation.TrafficViolations.queryViolation\", \"parameters\": {\"plate_number\": \"Yue B67890\", \"city\": \"Guangzhou\", \"time\": \"\"}}\n```",
     "label": {
@@ -121,30 +94,17 @@ evaluate.py requires two inputs: the MT_0.json file and the MT_res.json file. Th
 
 Use the following command for evaluation:
 ```
-bash evaluate.sh <log_dir> <language>
+python evaluate.py <log_dir> <language>
 ```
 
 For example, to evaluate the Qwen2.5-7B-Instruct model:
 ```
-bash test.sh Qwen2.5-7B-Instruct en
-bash evaluate.sh logs/Qwen2.5-7B-Instruct en
-```
-
-You can set 'is_llm_judge = True' in evaluate.py and select model path in 'evaluation/llm_judge.py' to judge query-label-predict by LLMs (download [LLM](https://huggingface.co/hugging-quants/Meta-Llama-3.1-70B-Instruct-GPTQ-INT4) from huggingface).  The LLM judge prompt is in 'evaluation/prompt_judge.py'. And judge function is in 'evaluation/llm_judge.py'.
-You can change the snapshot_id list([[0],[1,2], [-1]...]) in 'evaluate.py' to evaluate different turn for each conversation.
-
-### Post-processing log file
-After recording the results(e.g. Qwen7B.log) obtained from the previous bash commands, it can be conveniently converted into a dataframe through logs/log2df.py.
-```
-bash evaluate.sh logs/Qwen2.5-7B-Instruct en > logs/Qwen7B.log 2>&1
-cd logs/
-python log2df.py Qwen7B.log
+python evaluate.py logs/Qwen2.5-7B-Instruct en
 ```
 
 ## Evaluation for more LLMs:
-If you need to adapt the prompt and post-processing for different output formats, please modify :
+If you need to adapt post-processing method for different output formats, please modify :
 ```
-template.py
 evaluation/process_output.py
 ```
 

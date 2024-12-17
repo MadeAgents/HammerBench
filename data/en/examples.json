@@ -1,0 +1,181 @@
+[
+    {
+      "id": "Based_0_1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Check if my car has any illegal records"
+        },
+        {
+          "role": "function call",
+          "content": {
+            "name": "Navigation.TrafficViolations.queryViolation",
+            "arguments": {}
+          }
+        },
+        {
+          "role": "assistant",
+          "content": "What city is the violation located in?"
+        },
+        {
+          "role": "user",
+          "content": "The violating city is Guangzhou."
+        },
+        {
+          "role": "function call",
+          "content": {
+            "name": "Navigation.TrafficViolations.queryViolation",
+            "arguments": {
+              "city": "Guangzhou"
+            }
+          }
+        },
+        {
+          "role": "assistant",
+          "content": "Please provide the license plate number"
+        },
+        {
+          "role": "user",
+          "content": "My license plate number is Yue B67890."
+        },
+        {
+          "role": "function call",
+          "content": {
+            "name": "Navigation.TrafficViolations.queryViolation",
+            "arguments": {
+              "city": "Guangzhou",
+              "plate_number": "Yue B67890"
+            }
+          }
+        }
+      ],
+      "multiple_tools": [
+        {
+          "name": "Health.HealthManagement.searchDietRecord",
+          "description": "Search dietary records by food name, type of meal, etc.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "food_name": {
+                "type": "string",
+                "description": "Food Name"
+              },
+              "meal_type": {
+                "type": "string",
+                "description": "Types of meals, such as breakfast, lunch, dinner, or add-ons"
+              },
+              "time": {
+                "type": "string",
+                "description": "Meal Time"
+              }
+            },
+            "required": [
+              "food_name",
+              "meal_type",
+              "time"
+            ]
+          }
+        },
+        {
+          "name": "Navigation.TrafficViolations.queryViolation",
+          "description": "Query traffic violation records by conditions",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "plate_number": {
+                "type": "string",
+                "description": "License plate number"
+              },
+              "city": {
+                "type": "string",
+                "description": "Violating city"
+              },
+              "time": {
+                "type": "string",
+                "description": "Billing Time"
+              }
+            },
+            "required": [
+              "plate_number",
+              "city",
+              "time"
+            ]
+          }
+        },
+        {
+          "name": "OfficeSoftware.CloudStorage.netdiskGetUploadFilesRecords",
+          "description": "Get a list of uploaded files/folders records in Cloud Drive",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          }
+        },
+        {
+          "name": "Travel.HotelServices.getHotelReservationHistory",
+          "description": "Get a user's hotel booking history",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "start_date": {
+                "type": "string",
+                "description": "Start Time "
+              },
+              "end_date": {
+                "type": "string",
+                "description": "End Time"
+              }
+            },
+            "required": [
+              "start_date",
+              "end_date"
+            ]
+          }
+        },
+        {
+          "name": "Health.MedicalServices.getPatientMedicalRecord",
+          "description": "Obtain the patient's medical record information based on the patient's name, etc.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "patient_name": {
+                "type": "string",
+                "description": "Patient Name"
+              }
+            },
+            "required": [
+              "patient_name"
+            ]
+          }
+        }
+      ],
+      "single_tool": [
+        {
+          "name": "Navigation.TrafficViolations.queryViolation",
+          "description": "Query traffic violation records by conditions",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "plate_number": {
+                "type": "string",
+                "description": "License plate number"
+              },
+              "city": {
+                "type": "string",
+                "description": "Violating city"
+              },
+              "time": {
+                "type": "string",
+                "description": "Billing Time"
+              }
+            },
+            "required": [
+              "plate_number",
+              "city",
+              "time"
+            ]
+          }
+        }
+      ]
+    }
+]
