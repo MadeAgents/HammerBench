@@ -1,6 +1,6 @@
 # HammerBench
 
-The source code and dataset mentioned in the paper [**HammerBench: Fine-Grained Evaluation for Function-Calling with Multi-turn Human-LLM Interactions**](https://arxiv.org/pdf/).
+The source code and dataset mentioned in the paper [**HammerBench: Fine-Grained Function-Calling Evaluation in Real Mobile Device Scenarios**](https://arxiv.org/pdf/2412.16516).
 
 ## Overview
 **HammerBench** is a benchmark that closely aligned with realworld slot-filling tasks in interactive dialogues. You can evaluate the performance of LLMs under various circumstances as follows:
@@ -113,13 +113,10 @@ evaluation/process_output.py
 
 If you use HammerBench, please cite our paper:
 ```
-@misc{hammerbench,
-      title={HammerBench: Fine-Grained Evaluation for Function-Calling with Multi-turn Human-LLM Interactions}, 
-      author={},
-      year={2024},
-      eprint={},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/}, 
+@article{wang2024hammerbench,
+  title={Hammerbench: Fine-grained function-calling evaluation in real mobile device scenarios},
+  author={Wang, Jun and Zhou, Jiamu and Wen, Muning and Mo, Xiaoyun and Zhang, Haoyu and Lin, Qiqiang and Jin, Cheng and Wang, Xihuai and Zhang, Weinan and Peng, Qiuying},
+  journal={arXiv preprint arXiv:2412.16516},
+  year={2024}
 }
 ```
