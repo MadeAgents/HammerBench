@@ -65,9 +65,9 @@ single-turn(ST-Perfect, ir-ST-Perfect, ST-Imperfect, ir-ST-Imperfect, ST-Externa
 
 multi-turn( Diverse Q&A (Based, mQmA, mQsA, sQmA), Intent shifts (IS), Argument shifts (SO-case1, SO-case2, mSv), External individual information (External))
 
-**conversation-id** represents the indice in 'Based' data-type for data before transformation (e.g. w/o SO...).
+**conversation-id** represents the indice in 'Based' data-type for data before transformation (e.g. w/o SO...), start from 0 .
 
-**turn-id** represents turn-id-th function calling snapshot in the conversation.
+**turn-id** represents turn-id-th function calling snapshot in the conversation, start from 1 . while turn-id is equal to 1, this example is 1-th function calling snapshot.
 
 All datasets are transformed from the 'HammerBench_Based.json' in the sQsA format.
 
